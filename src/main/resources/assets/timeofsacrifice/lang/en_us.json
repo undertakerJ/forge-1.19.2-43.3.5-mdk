@@ -1,6 +1,10 @@
 {
-  "item.timeofsacrifice.platinum_ingot": "Platinum ingot",
-  "item.timeofsacrifice.platinum_ore": "Platinum ore",
+  "item.timeofsacrifice.platinum_ingot": "Platinum Ingot",
+  "item.timeofsacrifice.raw_platinum_ore": "Raw Platinum Ore",
+
+  "block.timeofsacrifice.platinum_ore": "Platinum Ore",
+  "block.timeofsacrifice.platinum_block": "Block of Platinum",
+  "block.timeofsacrifice.deepslate_platinum_ore": "Deepslate Platinum Ore",
 
 
   "itemGroup.ToS_Tab": "Time of Sacrifice"
