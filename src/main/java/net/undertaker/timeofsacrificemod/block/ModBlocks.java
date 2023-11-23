@@ -26,7 +26,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> PLATINUM_BLOCK = registerBlock("platinum_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
-                    .strength(7f).requiresCorrectToolForDrops()), ModCreativeModeTab.TIME_OF_SACRIFICE_TAB);
+                    .strength(6f).requiresCorrectToolForDrops()), ModCreativeModeTab.TIME_OF_SACRIFICE_TAB);
 
  public static final RegistryObject<Block> PLATINUM_ORE = registerBlock("platinum_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE)

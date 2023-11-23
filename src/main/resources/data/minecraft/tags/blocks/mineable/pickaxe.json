@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "timeofsacrifice:platinum_ore",
+    "timeofsacrifice:deepslate_platinum_ore",
+    "timeofsacrifice:platinum_block"
+  ]
+}
