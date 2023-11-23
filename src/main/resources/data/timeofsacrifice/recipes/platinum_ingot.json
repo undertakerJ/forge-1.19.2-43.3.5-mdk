@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "timeofsacrifice:platinum_block"
+
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "timeofsacrifice:platinum_ingot"
+  }
+}
