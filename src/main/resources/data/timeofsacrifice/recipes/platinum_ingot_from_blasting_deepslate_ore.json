@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "platinum_ingot",
+  "ingredient": {
+    "item": "timeofsacrifice:deepslate_platinum_ore"
+  },
+  "result": "timeofsacrifice:platinum_ingot"
+}
