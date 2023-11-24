@@ -14,6 +14,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.undertaker.timeofsacrificemod.block.ModBlocks;
 import net.undertaker.timeofsacrificemod.item.ModItems;
+import net.undertaker.timeofsacrificemod.sound.ModSounds;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -31,6 +32,7 @@ public class TimeOfSacrifice
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModSounds.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         // Register ourselves for server and other game events we are interested in
