@@ -6,10 +6,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.undertaker.timeofsacrificemod.TimeOfSacrifice;
-import net.undertaker.timeofsacrificemod.item.custom.RegenerationStimulatorItem;
-import net.undertaker.timeofsacrificemod.item.custom.SpeedStimulatorItem;
-import net.undertaker.timeofsacrificemod.item.custom.StrengthStimulatorItem;
-import net.undertaker.timeofsacrificemod.item.custom.UltimateStimulatorItem;
+import net.undertaker.timeofsacrificemod.item.custom.*;
 
 
 public class ModItems {
@@ -28,6 +25,8 @@ public static final RegistryObject<Item> STRENGTH_STIMULATOR = ITEMS.register("s
             () -> new StrengthStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
 public static final RegistryObject<Item> ULTIMATE_STIMULATOR = ITEMS.register("ultimate_stimulator",
             () -> new UltimateStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
+public static final RegistryObject<Item> EXPERIMENTAL_STIMULATOR = ITEMS.register("experimental_stimulator",
+            () -> new ExperimentalStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

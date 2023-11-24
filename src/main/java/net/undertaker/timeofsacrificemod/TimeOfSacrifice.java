@@ -26,7 +26,7 @@ public class TimeOfSacrifice
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     public TimeOfSacrifice()
-            //TOTALNIGGERDEATH
+            //bruh
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
