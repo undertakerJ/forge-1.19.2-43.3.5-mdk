@@ -49,7 +49,7 @@ public class UltimateStimulatorItem extends Item {
                     applyEffects(player);
                 }
 
-                player.getCooldowns().addCooldown(this, 6000);
+                player.getCooldowns().addCooldown(this, 5 * 60 * 20);
                 level.playSound(null, player, ModSounds.STIMULATOR_USED.get(), SoundSource.AMBIENT, 1f, 1f);
             }
         }
