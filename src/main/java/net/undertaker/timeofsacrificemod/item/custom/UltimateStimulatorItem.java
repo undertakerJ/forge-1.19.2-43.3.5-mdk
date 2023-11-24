@@ -15,12 +15,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraftforge.client.event.sound.PlaySoundEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
 
 import javax.annotation.Nullable;
-import java.applet.AppletContext;
 
 public class UltimateStimulatorItem extends Item {
 
@@ -48,13 +45,12 @@ public class UltimateStimulatorItem extends Item {
                 // Если есть результат !=null и эффекты применяются
                 if (playerAtCursor != null) {
                     applyEffects((LivingEntity) playerAtCursor.getEntity());
-                }
-               else{
-                   applyEffects(player);
+                } else {
+                    applyEffects(player);
                 }
 
                 player.getCooldowns().addCooldown(this, 6000);
-                level.playSound(null,player, ModSounds.STIMULATOR_USED.get(), SoundSource.AMBIENT,1f,1f);
+                level.playSound(null, player, ModSounds.STIMULATOR_USED.get(), SoundSource.AMBIENT, 1f, 1f);
             }
         }
         return super.use(level, player, interactionHand);
