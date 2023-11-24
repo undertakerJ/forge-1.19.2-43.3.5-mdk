@@ -1,0 +1,8 @@
+{
+  "stimulator_used":{
+    "subtitle": "sounds.timeofsacrifice.stimulator_used",
+    "sounds": [
+      "timeofsacrifice:stimulator_used"
+    ]
+  }
+}

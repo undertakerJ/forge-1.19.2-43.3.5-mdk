@@ -1,5 +1,6 @@
 package net.undertaker.timeofsacrificemod.item.custom;
 
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -11,6 +12,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.undertaker.timeofsacrificemod.sound.ModSounds;
 
 import javax.annotation.Nullable;
 
@@ -45,6 +47,7 @@ public class SpeedStimulatorItem extends Item {
                     applyEffects(player);
                 }
                 player.getCooldowns().addCooldown(this, 30*20);
+                level.playSound(null,player, ModSounds.STIMULATOR_USED.get(), SoundSource.AMBIENT,1f,1f);
             }
         }
         return super.use(level, player, interactionHand);
