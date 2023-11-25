@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.undertaker.timeofsacrificemod.block.ModBlocks;
+import net.undertaker.timeofsacrificemod.effect.ModEffects;
 import net.undertaker.timeofsacrificemod.item.ModItems;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
 import org.slf4j.Logger;
@@ -33,6 +34,7 @@ public class TimeOfSacrifice
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModEffects.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         // Register ourselves for server and other game events we are interested in
