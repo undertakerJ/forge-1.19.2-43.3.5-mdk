@@ -7,11 +7,13 @@
   "item.timeofsacrifice.ultimate_stimulator": "Ultimate Stimulator",
   "item.timeofsacrifice.experimental_stimulator": "Experimental Stimulator",
   "item.timeofsacrifice.dragon_slayer_sword": "Dragon Slayer",
+  "item.timeofsacrifice.amethyst_dagger": "Amethyst Dagger",
 
   "block.timeofsacrifice.platinum_ore": "Platinum Ore",
   "block.timeofsacrifice.platinum_block": "Block of Platinum",
   "block.timeofsacrifice.deepslate_platinum_ore": "Deepslate Platinum Ore",
 
   "sounds.timeofsacrifice.stimulator_used": "Stimulator Used",
+
   "itemGroup.ToS_Tab": "Time of Sacrifice"
 }

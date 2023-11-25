@@ -2,6 +2,7 @@ package net.undertaker.timeofsacrificemod.item;
 
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -28,14 +29,23 @@ public class ModItems {
     public static final RegistryObject<Item> EXPERIMENTAL_STIMULATOR = ITEMS.register("experimental_stimulator",
             () -> new ExperimentalStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> DRAGON_SLAYER_SWORD = ITEMS.register("dragon_slayer_sword",
-            () -> {
-                return new SwordItem(Tiers.NETHERITE, 20, -3.5f,
+            () ->
+                 new SwordItem(Tiers.NETHERITE, 20, -3.5f,
                         new Item.Properties()
                                 .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                                 .stacksTo(1)
                                 .defaultDurability(2000)
-                                .rarity(Rarity.EPIC));
-            });
+                                .rarity(Rarity.EPIC))
+            );
+    public static final RegistryObject<Item> AMETHYST_DAGGER =  ITEMS.register("amethyst_dagger",
+            () ->
+                new AmethystDaggerItem(Tiers.DIAMOND, 3, -2F,
+                        new Item.Properties()
+                                .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                                .stacksTo(1)
+                                .defaultDurability(334)
+                                .rarity(Rarity.RARE)));
+
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
