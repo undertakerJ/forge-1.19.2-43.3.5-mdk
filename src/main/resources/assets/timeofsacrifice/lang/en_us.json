@@ -9,7 +9,8 @@
   "item.timeofsacrifice.dragon_slayer_sword": "Dragon Slayer",
   "item.timeofsacrifice.amethyst_dagger": "Amethyst Dagger",
 
- "effect.timeofsacrifice.armor_shred": "Armor Shred",
+  "effect.timeofsacrifice.armor_shred": "Armor Shred",
+  "effect.timeofsacrifice.guaranteed_crit": "Guaranteed Crit",
 
   "block.timeofsacrifice.platinum_ore": "Platinum Ore",
   "block.timeofsacrifice.platinum_block": "Block of Platinum",

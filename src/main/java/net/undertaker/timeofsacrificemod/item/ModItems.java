@@ -30,16 +30,17 @@ public class ModItems {
             () -> new ExperimentalStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> DRAGON_SLAYER_SWORD = ITEMS.register("dragon_slayer_sword",
             () ->
-                 new DragonSlayerSwordItem(Tiers.NETHERITE, 7, -3.5f,
+                 new DragonSlayerSwordItem(Tiers.NETHERITE, 10, -3.5f,
                         new Item.Properties()
                                 .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                                 .stacksTo(1)
                                 .defaultDurability(2000)
-                                .rarity(Rarity.EPIC))
+                                .rarity(Rarity.EPIC)
+                 )
             );
     public static final RegistryObject<Item> AMETHYST_DAGGER =  ITEMS.register("amethyst_dagger",
             () ->
-                new AmethystDaggerItem(Tiers.DIAMOND, 3, -2F,
+                new AmethystDaggerItem(Tiers.DIAMOND, 2, -2F,
                         new Item.Properties()
                                 .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                                 .stacksTo(1)

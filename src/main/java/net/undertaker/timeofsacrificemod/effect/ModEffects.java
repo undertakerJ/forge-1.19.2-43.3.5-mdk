@@ -16,6 +16,8 @@ public class ModEffects extends MobEffects {
 
     public static final RegistryObject<MobEffect> ARMOR_SHRED = MOB_EFFECTS.register("armor_shred",
             () -> new ArmorShredEffect());
+    public static final RegistryObject<MobEffect> GUARANTEED_CRIT = MOB_EFFECTS.register("guaranteed_crit",
+            () -> new GuaranteedCritEffect());
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);
