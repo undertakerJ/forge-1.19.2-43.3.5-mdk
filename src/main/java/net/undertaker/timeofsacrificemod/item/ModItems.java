@@ -30,7 +30,7 @@ public class ModItems {
             () -> new ExperimentalStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> DRAGON_SLAYER_SWORD = ITEMS.register("dragon_slayer_sword",
             () ->
-                 new SwordItem(Tiers.NETHERITE, 20, -3.5f,
+                 new DragonSlayerSwordItem(Tiers.NETHERITE, 7, -3.5f,
                         new Item.Properties()
                                 .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                                 .stacksTo(1)
