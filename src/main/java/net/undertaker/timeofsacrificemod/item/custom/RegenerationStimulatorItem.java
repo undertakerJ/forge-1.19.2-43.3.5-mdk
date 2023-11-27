@@ -73,15 +73,15 @@ public class RegenerationStimulatorItem extends Item {
 
     // Метод для применения эффектов на сущность
     private void applyEffects(LivingEntity livingEntity) {
-        // Добавляем эффект регенерации на 10 секунд с уровнем 4
+        // Добавляем эффект регенерации на 10 секунд с уровнем 2
         livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 1));
 
     }
 
     private void applySideEffects(LivingEntity livingEntity) {
         // Добавляем эффект регенерации на 10 секунд с уровнем 4
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30 * 20, 1));
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 30 * 20, 3));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 10 * 20, 1));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 5 * 20, 3));
 
     }
 }

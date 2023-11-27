@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern": [
+    "#",
+    "#",
+    "S"
+  ],
+  "key": {
+  "#": {
+    "item": "timeofsacrifice:an_amazing_tempered_metal_balk_covered_with_platinum"
+  },
+    "S": {
+      "item":"minecraft:stick"
+    }
+},
+  "result": {
+    "item": "timeofsacrifice:dragon_slayer_sword"
+  }
+}

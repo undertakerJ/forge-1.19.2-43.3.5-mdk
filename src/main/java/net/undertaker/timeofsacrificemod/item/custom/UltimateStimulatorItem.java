@@ -48,7 +48,6 @@ public class UltimateStimulatorItem extends Item {
                 } else {
                     applyEffects(player);
                 }
-
                 player.getCooldowns().addCooldown(this, 5 * 60 * 20);
                 level.playSound(null, player, ModSounds.STIMULATOR_USED.get(), SoundSource.AMBIENT, 1f, 1f);
             }
@@ -59,17 +58,16 @@ public class UltimateStimulatorItem extends Item {
     // Метод для применения эффектов на сущность
     private void applyEffects(LivingEntity livingEntity) {
         // Добавляем эффект регенерации на 10 секунд с уровнем 4
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 10 * 20, 3));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 15 * 20, 3));
         // Добавляем эффект силы на 10 секунд с уровнем 4
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 10 * 20, 3));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 15 * 20, 3));
         // Добавляем эффект скорости на 10 секунд с уровнем 4
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10 * 20, 3));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 15 * 20, 3));
         // Добавляем эффект сопротивления на 10 секунд с уровнем 4
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 10 * 20, 3));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 15 * 20, 3));
         // Добавляем эффект тошноты на 30 секунд
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 30 * 20, 0));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 10 * 20, 0));
 
     }
-
 
 }

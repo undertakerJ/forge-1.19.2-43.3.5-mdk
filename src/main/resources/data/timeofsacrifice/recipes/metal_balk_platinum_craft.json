@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+
+  "pattern": [
+    "###",
+    "#A#",
+    "###"
+  ],
+  "key": {
+  "#": {
+    "item": "timeofsacrifice:platinum_ingot"
+  },
+    "A": {
+    "item": "timeofsacrifice:an_amazing_metal_balk"
+  }
+},
+  "result": {
+    "item": "timeofsacrifice:an_amazing_metal_balk_covered_with_platinum"
+  }
+}

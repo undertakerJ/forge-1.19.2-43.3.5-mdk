@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "cookingtime": 18000,
+  "experience": 0.1,
+  "group": "balk_group",
+  "ingredient": {
+    "item": "timeofsacrifice:an_amazing_metal_balk_covered_with_platinum"
+  },
+  "result": "timeofsacrifice:an_amazing_tempered_metal_balk_covered_with_platinum"
+}

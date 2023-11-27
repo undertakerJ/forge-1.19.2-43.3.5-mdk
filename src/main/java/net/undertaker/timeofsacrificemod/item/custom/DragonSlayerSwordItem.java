@@ -36,9 +36,15 @@ public class DragonSlayerSwordItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
         if (Screen.hasShiftDown()) {
-            components.add(Component.literal("Applies on hit with 50% chance next effects for 30 seconds: Slowness and Armor Shred IV." +
-                    " If this is player, affects them with confusion for 30 seconds on hit." +
-                    " Deal additional 25 damage to undead."));
+            components.add(Component.literal("Requires Strength effect to use. With 50% applies Slowness II and"));
+            components.add(Component.literal("Armor Shred IV, players get additional Confusion effect, for 30 seconds."));
+            components.add(Component.literal("Deal additional 25 damage to undead."));
+            components.add(Component.literal(" "));
+            components.add(Component.literal("Armor Shred - reduces armor for 10% each level of debuff.").withStyle(ChatFormatting.DARK_GRAY));
+            components.add(Component.literal(" "));
+            components.add(Component.literal("HIS WEAPON WAS TOO LARGE TO RIGHTFULLY BE CALLED A SWORD.").withStyle(ChatFormatting.GRAY));
+            components.add(Component.literal("IT WAS LARGER, THICKER, HEAVIER AND CRUELER THAN ANY NORMAL BLADE.").withStyle(ChatFormatting.GRAY));
+            components.add(Component.literal("BY ALL ACCOUNTS - IT WAS NO MORE THAN A HULKING MASS OF IRON. ").withStyle(ChatFormatting.GRAY));
         } else {
             components.add(Component.literal("Hold SHIFT for more info").withStyle(ChatFormatting.DARK_GRAY));
         }
@@ -55,7 +61,7 @@ public class DragonSlayerSwordItem extends SwordItem {
             if (entity instanceof LivingEntity livingEntity) {
                 float randomNumber = player.getRandom().nextFloat();
                 if (randomNumber < 0.5f) {
-                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30 * 20, 0));
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30 * 20, 1));
                     livingEntity.addEffect(new MobEffectInstance(ModEffects.ARMOR_SHRED.get(), 30 * 20, 3));
                 }
                 if (entity.getType() == EntityType.PLAYER) {
