@@ -21,8 +21,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -121,6 +119,7 @@ public class AmethystDaggerItem extends SwordItem {
                         player.teleportTo(newX, newY, newZ);
                         player.getItemInHand(interactionHand).hurtAndBreak(8, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
                         player.getCooldowns().addCooldown(this,10*20);
+                        player.setInvulnerable(true);
                     }
                 }
             }

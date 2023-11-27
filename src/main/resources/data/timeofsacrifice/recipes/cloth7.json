@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " i ",
+    "iSi",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "item": "minecraft:gray_wool"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:cloth"
+  }
+}

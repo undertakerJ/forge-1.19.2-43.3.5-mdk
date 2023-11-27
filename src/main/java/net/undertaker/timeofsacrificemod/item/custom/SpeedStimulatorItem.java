@@ -76,8 +76,8 @@ public class SpeedStimulatorItem extends Item {
 
     private void applySideEffects(LivingEntity livingEntity) {
         // Добавляем эффект регенерации на 10 секунд с уровнем 4
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30 * 20, 1));
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30 * 20, 3));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 15 * 20, 1));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5 * 20, 3));
 
     }
 }

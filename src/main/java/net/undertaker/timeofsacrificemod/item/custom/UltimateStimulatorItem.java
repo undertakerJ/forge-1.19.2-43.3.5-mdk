@@ -66,7 +66,7 @@ public class UltimateStimulatorItem extends Item {
         // Добавляем эффект сопротивления на 10 секунд с уровнем 4
         livingEntity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 15 * 20, 3));
         // Добавляем эффект тошноты на 30 секунд
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 10 * 20, 0));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 5 * 20, 0));
 
     }
 

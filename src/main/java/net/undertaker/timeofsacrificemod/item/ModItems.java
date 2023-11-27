@@ -16,6 +16,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+    public static final RegistryObject<Item> CLOTH = ITEMS.register("cloth",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> PLATINUM_ORE = ITEMS.register("raw_platinum_ore",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> SPEED_STIMULATOR = ITEMS.register("speed_stimulator",

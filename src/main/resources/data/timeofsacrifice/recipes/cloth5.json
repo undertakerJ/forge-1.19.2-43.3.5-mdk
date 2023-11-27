@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#S#",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "item": "minecraft:blue_wool"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:cloth"
+  }
+}

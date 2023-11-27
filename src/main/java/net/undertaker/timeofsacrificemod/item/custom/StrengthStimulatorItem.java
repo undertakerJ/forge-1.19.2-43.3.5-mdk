@@ -76,8 +76,8 @@ public class StrengthStimulatorItem extends Item {
 
     private void applySideEffects(LivingEntity livingEntity) {
         // Добавляем эффект регенерации на 10 секунд с уровнем 4
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30 * 20, 1));
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 30 * 20, 3));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 15 * 20, 1));
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 5 * 20, 3));
 
     }
 }
