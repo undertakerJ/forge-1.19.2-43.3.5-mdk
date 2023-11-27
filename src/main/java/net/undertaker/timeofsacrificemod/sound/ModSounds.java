@@ -14,6 +14,8 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> STIMULATOR_USED =
             registerSoundEvent("stimulator_used");
+ public static final RegistryObject<SoundEvent> BANDAGE_USAGE =
+            registerSoundEvent("bandage_usage");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(TimeOfSacrifice.MOD_ID, name);

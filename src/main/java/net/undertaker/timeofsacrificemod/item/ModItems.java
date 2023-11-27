@@ -2,7 +2,6 @@ package net.undertaker.timeofsacrificemod.item;
 
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -34,6 +33,8 @@ public class ModItems {
                             .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                             .stacksTo(1)
                             .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage",
+            () -> new BandageItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(8)));
     public static final RegistryObject<Item> STRENGTH_STIMULATOR = ITEMS.register("strength_stimulator",
             () -> new StrengthStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> ULTIMATE_STIMULATOR = ITEMS.register("ultimate_stimulator",

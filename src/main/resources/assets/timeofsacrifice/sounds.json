@@ -1,8 +1,15 @@
 {
-  "stimulator_used":{
+  "stimulator_used": {
     "subtitle": "sounds.timeofsacrifice.stimulator_used",
     "sounds": [
       "timeofsacrifice:stimulator_used"
     ]
+  },
+  "bandage_usage": {
+    "subtitle": "sounds.timeofsacrifice.bandage_usage",
+    "sounds": [
+      "timeofsacrifice:bandage_usage"
+    ]
   }
 }
+
