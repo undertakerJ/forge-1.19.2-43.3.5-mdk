@@ -1,6 +1,9 @@
 package net.undertaker.timeofsacrificemod.item.custom;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,10 +16,13 @@ import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -24,6 +30,7 @@ import net.undertaker.timeofsacrificemod.TimeOfSacrifice;
 import net.undertaker.timeofsacrificemod.effect.ModEffects;
 
 import javax.annotation.Nullable;
+import java.util.List;
 import java.util.function.Predicate;
 
 @Mod.EventBusSubscriber(modid = TimeOfSacrifice.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -58,7 +65,23 @@ public class AmethystDaggerItem extends SwordItem {
         }
         return super.onLeftClickEntity(stack, player, entity);
     }
+    @Override
+    public void appendHoverText(ItemStack itemStack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+        if(Screen.hasShiftDown()){
+            components.add(Component.literal("Applies on hit with 25% chance next effects for 30 seconds:"));
+            components.add(Component.literal("Poison, Slowness, Armor Shred II"));
+            components.add(Component.literal("Attacking player additional apply a glowing effect for 60 seconds"));
+            components.add(Component.literal("Press SHIFT+RMB to entity in 12 block to teleport behind"));
+            components.add(Component.literal("them, and gain Invicible III for 3 seconds and"));
+            components.add(Component.literal("Guaranteed Crit effect for 10 seconds with x2.5 damage."));
+            components.add(Component.literal("Teleport consumes 8 durability each time. Reload - 10 seconds. "));
+            components.add(Component.literal("Guaranteed Crit - make your first attack critical").withStyle(ChatFormatting.DARK_GRAY));
 
+        } else {
+            components.add(Component.literal("Hold SHIFT for more info").withStyle(ChatFormatting.DARK_GRAY));
+        }
+        super.appendHoverText(itemStack, level, components, tooltipFlag);
+    }
     @SubscribeEvent
     public static void onCriticalHitEvent(CriticalHitEvent event) {
         Player player = event.getEntity();
@@ -94,8 +117,10 @@ public class AmethystDaggerItem extends SwordItem {
                         player.lookAt(EntityAnchorArgument.Anchor.EYES, getEntityAtCursor(player, 16).getEntity().getEyePosition());
                         player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 3 * 20, 2));
                         player.addEffect(new MobEffectInstance(ModEffects.GUARANTEED_CRIT.get(), 10 * 20, 0));
+                        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3 * 20, 9));
                         player.teleportTo(newX, newY, newZ);
                         player.getItemInHand(interactionHand).hurtAndBreak(8, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
+                        player.getCooldowns().addCooldown(this,10*20);
                     }
                 }
             }
