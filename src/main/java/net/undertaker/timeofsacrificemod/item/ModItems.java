@@ -19,6 +19,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> PLATINUM_ORE = ITEMS.register("raw_platinum_ore",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+    public static final RegistryObject<Item> MORTAR = ITEMS.register("mortar",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> SPEED_STIMULATOR = ITEMS.register("speed_stimulator",
             () -> new SpeedStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> REGENERATION_STIMULATOR = ITEMS.register("regeneration_stimulator",
@@ -35,6 +37,8 @@ public class ModItems {
                             .rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage",
             () -> new BandageItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(8)));
+    public static final RegistryObject<Item> HEALING_OINTMENT = ITEMS.register("healing_ointment",
+            () -> new HealingOintmentItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> STRENGTH_STIMULATOR = ITEMS.register("strength_stimulator",
             () -> new StrengthStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> ULTIMATE_STIMULATOR = ITEMS.register("ultimate_stimulator",

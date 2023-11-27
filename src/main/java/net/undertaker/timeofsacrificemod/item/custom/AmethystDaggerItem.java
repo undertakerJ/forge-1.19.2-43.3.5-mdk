@@ -94,7 +94,6 @@ public class AmethystDaggerItem extends SwordItem {
         }
     }
 
-
     @Override
     public  InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if (!level.isClientSide()) {
@@ -116,10 +115,9 @@ public class AmethystDaggerItem extends SwordItem {
                         player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 3 * 20, 2));
                         player.addEffect(new MobEffectInstance(ModEffects.GUARANTEED_CRIT.get(), 10 * 20, 0));
                         player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3 * 20, 9));
-                        player.teleportTo(newX, newY, newZ);
+                        player.teleportTo(newX, newY+1, newZ);
                         player.getItemInHand(interactionHand).hurtAndBreak(8, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
                         player.getCooldowns().addCooldown(this,10*20);
-                        player.setInvulnerable(true);
                     }
                 }
             }
