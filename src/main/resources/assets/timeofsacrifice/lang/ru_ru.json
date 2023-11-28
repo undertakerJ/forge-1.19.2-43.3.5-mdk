@@ -58,8 +58,7 @@
   "tooltip.speed_stimulator_item": "Applies Speed II for 30 seconds on use with 90% chance.",
   "tooltip.strength_stimulator_item": "Applies Strength II for 30 seconds on use with 90% chance.",
   "tooltip.exp_stimulator_item": "Applies all buffs VI with 20% chance for 30 seconds, other 80% debuffs.",
-  "tooltip.ultimate_stimulator_item": "Applies Regeneration, Strength, Speed and Damage Resistance IV for 30 seconds",
-
+  "tooltip.ultimate_stimulator_item": "Applies Regeneration, Strength, Speed and Damage R esistance IV for 30 seconds",
 
   "effect.timeofsacrifice.armor_shred": "Armor Shred",
   "effect.timeofsacrifice.guaranteed_crit": "Guaranteed Crit",

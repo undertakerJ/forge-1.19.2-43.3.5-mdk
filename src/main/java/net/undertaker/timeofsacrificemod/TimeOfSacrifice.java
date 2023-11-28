@@ -17,6 +17,8 @@ import net.undertaker.timeofsacrificemod.effect.ModEffects;
 import net.undertaker.timeofsacrificemod.item.ModItems;
 import net.undertaker.timeofsacrificemod.loot.ModLootModifiers;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
+import net.undertaker.timeofsacrificemod.world.feature.ModConfiguredFeatures;
+import net.undertaker.timeofsacrificemod.world.feature.ModPlacedFeatures;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -39,6 +41,9 @@ public class TimeOfSacrifice
         ModSounds.register(modEventBus);
 
         ModEffects.register(modEventBus);
+
+        ModConfiguredFeatures.register(modEventBus);
+        ModPlacedFeatures.register(modEventBus);
 
         ModLootModifiers.register(modEventBus);
         // Register the commonSetup method for modloading
