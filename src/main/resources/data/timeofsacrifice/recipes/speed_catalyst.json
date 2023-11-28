@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "QWQ",
+    "OSB",
+    "QWQ"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:sugar"
+    },
+    "S": {
+      "item": "timeofsacrifice:platinum_ingot"
+    },
+    "O": {
+      "item": "minecraft:ender_pearl"
+    },
+    "B": {
+      "item": "minecraft:honey_bottle"
+    },
+    "Q": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:speed_catalyst"
+  }
+}

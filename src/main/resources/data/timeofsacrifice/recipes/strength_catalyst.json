@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "QWQ",
+    "OSB",
+    "QWQ"
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:blaze_powder"
+    },
+    "S": {
+      "item": "timeofsacrifice:platinum_ingot"
+    },
+    "O": {
+      "item": "minecraft:tnt"
+    },
+    "B": {
+      "item": "minecraft:arrow"
+    },
+    "Q": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:strength_catalyst"
+  }
+}

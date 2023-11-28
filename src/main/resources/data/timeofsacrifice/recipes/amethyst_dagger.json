@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "OSQ",
+    " AS",
+    "A O"
+  ],
+  "key": {
+    "S": {
+      "item": "timeofsacrifice:platinum_ingot"
+    },
+    "Q": {
+      "item": "minecraft:obsidian"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "O": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:amethyst_dagger"
+  }
+}

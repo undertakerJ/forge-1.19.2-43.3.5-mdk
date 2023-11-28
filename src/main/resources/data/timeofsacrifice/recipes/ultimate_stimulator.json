@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " EP",
+    "RNC",
+    "SQ "
+  ],
+  "key": {
+    "N": {
+      "item": "minecraft:nether_star"
+    },
+    "S": {
+      "item": "timeofsacrifice:platinum_ingot"
+    },
+    "Q": {
+      "item": "timeofsacrifice:speed_stimulator"
+    },
+    "E": {
+      "item": "timeofsacrifice:experimental_stimulator"
+    },
+    "C": {
+      "item": "timeofsacrifice:strength_stimulator"
+    },
+    "R": {
+      "item": "timeofsacrifice:regeneration_stimulator"
+    },
+    "P": {
+      "item": "timeofsacrifice:platinum_block"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:ultimate_stimulator"
+  }
+}

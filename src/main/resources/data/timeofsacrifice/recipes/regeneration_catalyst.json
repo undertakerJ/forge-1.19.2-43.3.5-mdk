@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "QWQ",
+    "OSB",
+    "QWQ"
+  ],
+  "key": {
+    "W": {
+      "item": "timeofsacrifice:bandage_with_ointment"
+    },
+    "S": {
+      "item": "timeofsacrifice:platinum_ingot"
+    },
+    "O": {
+      "item": "timeofsacrifice:healing_ointment"
+    },
+    "B": {
+      "item": "timeofsacrifice:bandage"
+    },
+    "Q": {
+      "item": "minecraft:stone"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:regeneration_catalyst"
+  }
+}

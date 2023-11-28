@@ -12,7 +12,7 @@ import net.undertaker.timeofsacrificemod.item.ModItems;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    PLATINUM( "platinum",26,new int[]{3,7,5,3}, 25,SoundEvents.ARMOR_EQUIP_IRON,
+    PLATINUM( "platinum",35,new int[]{3,7,5,3}, 25,SoundEvents.ARMOR_EQUIP_IRON,
             1f,0f, () ->
     {
         return Ingredient.of(ModItems.PLATINUM_INGOT.get());

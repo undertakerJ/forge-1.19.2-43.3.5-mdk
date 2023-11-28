@@ -14,8 +14,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, TimeOfSacrifice.MOD_ID);
 
-    public static final RegistryObject<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+
+    //TOOLS
     public static final RegistryObject<Item> PLATINUM_SWORD = ITEMS.register("platinum_sword",
             () -> new SwordItem(Tiers.DIAMOND, 3, -2.4f,
                     new Item.Properties()
@@ -46,6 +46,29 @@ public class ModItems {
                             .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                             .stacksTo(1)
                             .defaultDurability(750)));
+    public static final RegistryObject<Item> DRAGON_SLAYER_SWORD = ITEMS.register("dragon_slayer_sword",
+            () ->
+                    new DragonSlayerSwordItem(Tiers.NETHERITE, 10, -3.5f,
+                            new Item.Properties()
+                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                                    .stacksTo(1)
+                                    .defaultDurability(2000)
+                                    .rarity(Rarity.EPIC)
+                    )
+    );
+    public static final RegistryObject<Item> AMETHYST_DAGGER = ITEMS.register("amethyst_dagger",
+            () ->
+                    new AmethystDaggerItem(Tiers.DIAMOND, 2, -2F,
+                            new Item.Properties()
+                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                                    .stacksTo(1)
+                                    .defaultDurability(334)
+                                    .rarity(Rarity.RARE)));
+
+
+
+
+    ///ARMOR
     public static final RegistryObject<Item> PLATINUM_HELMET = ITEMS.register("platinum_helmet",
             () -> new ArmorItem(ModArmorMaterials.PLATINUM, EquipmentSlot.HEAD,
                     new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
@@ -59,9 +82,15 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.PLATINUM, EquipmentSlot.FEET,
                     new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
 
-
-
-
+    //ITEMS
+    public static final RegistryObject<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+    public static final RegistryObject<Item> SPEED_CATALYST = ITEMS.register("speed_catalyst",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+    public static final RegistryObject<Item> STRENGTH_CATALYST = ITEMS.register("strength_catalyst",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+    public static final RegistryObject<Item> REGENERATION_CATALYST = ITEMS.register("regeneration_catalyst",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> CLOTH = ITEMS.register("cloth",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> PLATINUM_ORE = ITEMS.register("raw_platinum_ore",
@@ -82,6 +111,9 @@ public class ModItems {
                             .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                             .stacksTo(1)
                             .rarity(Rarity.EPIC)));
+
+    //CUSTOM ITEMS
+
     public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage",
             () -> new BandageItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(8)));
     public static final RegistryObject<Item> HEALING_OINTMENT = ITEMS.register("healing_ointment",
@@ -94,24 +126,6 @@ public class ModItems {
             () -> new UltimateStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> EXPERIMENTAL_STIMULATOR = ITEMS.register("experimental_stimulator",
             () -> new ExperimentalStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
-    public static final RegistryObject<Item> DRAGON_SLAYER_SWORD = ITEMS.register("dragon_slayer_sword",
-            () ->
-                    new DragonSlayerSwordItem(Tiers.NETHERITE, 10, -3.5f,
-                            new Item.Properties()
-                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
-                                    .stacksTo(1)
-                                    .defaultDurability(2000)
-                                    .rarity(Rarity.EPIC)
-                    )
-    );
-    public static final RegistryObject<Item> AMETHYST_DAGGER = ITEMS.register("amethyst_dagger",
-            () ->
-                    new AmethystDaggerItem(Tiers.DIAMOND, 2, -2F,
-                            new Item.Properties()
-                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
-                                    .stacksTo(1)
-                                    .defaultDurability(334)
-                                    .rarity(Rarity.RARE)));
 
 
     public static void register(IEventBus eventBus) {

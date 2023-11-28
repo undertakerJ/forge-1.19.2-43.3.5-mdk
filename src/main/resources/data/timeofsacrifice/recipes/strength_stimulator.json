@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SAQ",
+    "OCA",
+    "SOS"
+  ],
+  "key": {
+    "C": {
+      "item": "timeofsacrifice:strength_catalyst"
+    },
+    "S": {
+      "item": "timeofsacrifice:platinum_ingot"
+    },
+    "Q": {
+      "item": "minecraft:obsidian"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "O": {
+      "item": "minecraft:glass"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:strength_stimulator"
+  }
+}
