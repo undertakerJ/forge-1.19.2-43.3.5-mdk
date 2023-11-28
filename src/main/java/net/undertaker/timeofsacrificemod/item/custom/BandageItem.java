@@ -27,6 +27,7 @@ public class BandageItem extends Item {
         level.playSound(null, player,ModSounds.BANDAGE_USAGE.get(), SoundSource.AMBIENT,1f,1f);
         return super.use(level, player, interactionHand);
     }
+
     public BandageItem(Properties pProperties) {
         super(pProperties);
     }

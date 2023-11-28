@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients":[
+    {
+      "item": "timeofsacrifice:healing_ointment"
+    },
+    {
+      "item": "timeofsacrifice:bandage"
+    }
+  ],
+  "result":{
+    "item": "timeofsacrifice:bandage_with_ointment"
+  }
+}

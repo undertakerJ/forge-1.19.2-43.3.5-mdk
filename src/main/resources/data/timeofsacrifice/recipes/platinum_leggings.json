@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "# #",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "timeofsacrifice:platinum_ingot"
+    }
+  },
+  "result": {
+    "item": "timeofsacrifice:platinum_leggings"
+  }
+}
