@@ -15,6 +15,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.undertaker.timeofsacrificemod.block.ModBlocks;
 import net.undertaker.timeofsacrificemod.effect.ModEffects;
 import net.undertaker.timeofsacrificemod.item.ModItems;
+import net.undertaker.timeofsacrificemod.loot.ModLootModifiers;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
 import org.slf4j.Logger;
 
@@ -32,28 +33,27 @@ public class TimeOfSacrifice
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(modEventBus);
+
         ModBlocks.register(modEventBus);
+
         ModSounds.register(modEventBus);
+
         ModEffects.register(modEventBus);
+
+        ModLootModifiers.register(modEventBus);
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
     }
-
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
-    }
+    private void commonSetup(final FMLCommonSetupEvent event) {}
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-
-        }
+        public static void onClientSetup(FMLClientSetupEvent event) {}
     }
 }

@@ -9,12 +9,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
-
+// Продлеваем класс предмета
 public class AnBalkMemeItem extends SwordItem {
-
+    //При использовании лкм на энтити
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {
+        //если энтити - живой
         if(entity instanceof LivingEntity) {
+            //добавляем эффект слабости 255 лвла
             player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60 * 20, 254));
         }
         return super.onLeftClickEntity(stack, player, entity);

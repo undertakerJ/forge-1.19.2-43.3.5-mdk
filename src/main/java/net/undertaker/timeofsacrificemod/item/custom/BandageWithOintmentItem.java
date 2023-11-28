@@ -11,23 +11,32 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
 
+//Продлеваем класс предмета
 public class BandageWithOintmentItem extends Item {
+    //При использовании предмета
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand){
-        if(!level.isClientSide){
-            if (player.isShiftKeyDown()) {
-                player.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0, false,false));
-                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 5*20, 1, false,true));
-                player.getCooldowns().addCooldown(this, 15*20);
-                player.getItemInHand(interactionHand).shrink(1);
-                if (player.getItemInHand(interactionHand).getCount() == 0) {
-                    player.setItemInHand(interactionHand, ItemStack.EMPTY);
-                }
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+        //Если это на сервере и игрок нажал шифт
+        if (!level.isClientSide && player.isShiftKeyDown()) {
+            //Добавляем эффекты
+            player.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, 0, false, false));
+            player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 5 * 20, 1, false, true));
+            //Делаем перезарядку после использования
+            player.getCooldowns().addCooldown(this, 15 * 20);
+            //Уменьшаем предмет на 1 за использование
+            player.getItemInHand(interactionHand).shrink(1);
+            //Проверка является ли количество предмета в руке 0
+            if (player.getItemInHand(interactionHand).getCount() == 0) {
+                //Если 0 = удаляем предмет
+                player.setItemInHand(interactionHand, ItemStack.EMPTY);
             }
+
         }
-        level.playSound(null, player, ModSounds.BANDAGE_USAGE.get(), SoundSource.AMBIENT,1f,1f);
+        //Проигрываем звук бинта
+        level.playSound(null, player, ModSounds.BANDAGE_USAGE.get(), SoundSource.AMBIENT, 1f, 1f);
         return super.use(level, player, interactionHand);
     }
+
     public BandageWithOintmentItem(Item.Properties pProperties) {
         super(pProperties);
     }

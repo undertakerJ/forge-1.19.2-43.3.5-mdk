@@ -30,15 +30,15 @@ import net.undertaker.timeofsacrificemod.effect.ModEffects;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
-
 @Mod.EventBusSubscriber(modid = TimeOfSacrifice.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-
+// Продлеваем класс предмета
 public class AmethystDaggerItem extends SwordItem {
-
+    // Отключаем разящий удар
     public boolean canPerformAction(ItemStack stack, net.minecraftforge.common.ToolAction toolAction) {
         return net.minecraftforge.common.ToolActions.SWORD_SWEEP.equals(false);
     }
 
+    // Делаем функцию на проверку моба на курсоре
     private @Nullable EntityHitResult getEntityAtCursor(Player player, float maxDistance) {
         Vec3 lookVector = player.getLookAngle().scale(maxDistance);
         Vec3 startPos = player.getEyePosition();
@@ -48,10 +48,15 @@ public class AmethystDaggerItem extends SwordItem {
         return ProjectileUtil.getEntityHitResult(
                 player.level, player, startPos, endPos, searchArea, filter);
     }
+
+    // При нажатии лкм на энтити
     @Override
     public boolean onLeftClickEntity(ItemStack stack, Player player, Entity entity) {
+        // Если энтити живой(моб, игрок)
         if (entity instanceof LivingEntity livingEntity) {
+            // Получаем случайный флот из игрока
             float randomNumber = player.getRandom().nextFloat();
+            //Если флот <0.25f, накладываем эффекты
             if (randomNumber < 0.25f) {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 30 * 20, 0));
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30 * 20, 0));
@@ -63,23 +68,27 @@ public class AmethystDaggerItem extends SwordItem {
         }
         return super.onLeftClickEntity(stack, player, entity);
     }
+
+    // Это описание предмета
     @Override
     public void appendHoverText(ItemStack itemStack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
-        if(Screen.hasShiftDown()){
-            components.add(Component.literal("Applies on hit with 25% chance next effects for 30 seconds:"));
-            components.add(Component.literal("Poison, Slowness, Armor Shred II"));
-            components.add(Component.literal("Attacking player additional apply a glowing effect for 60 seconds"));
-            components.add(Component.literal("Press SHIFT+RMB to entity in 12 block to teleport behind"));
-            components.add(Component.literal("them, and gain Invicible III for 3 seconds and"));
-            components.add(Component.literal("Guaranteed Crit effect for 10 seconds with x2.5 damage."));
-            components.add(Component.literal("Teleport consumes 8 durability each time. Reload - 10 seconds. "));
-            components.add(Component.literal("Guaranteed Crit - make your first attack critical").withStyle(ChatFormatting.DARK_GRAY));
+        if (Screen.hasShiftDown()) {
+            components.add(Component.translatable("tooltip.amethyst_dagger_item"));
+            components.add(Component.translatable("tooltip.amethyst_dagger_item1"));
+            components.add(Component.translatable("tooltip.amethyst_dagger_item2"));
+            components.add(Component.translatable("tooltip.amethyst_dagger_item3"));
+            components.add(Component.translatable("tooltip.amethyst_dagger_item4"));
+            components.add(Component.translatable("tooltip.amethyst_dagger_item5"));
+            components.add(Component.translatable("tooltip.amethyst_dagger_item6"));
+            components.add(Component.translatable("tooltip.amethyst_dagger_item7").withStyle(ChatFormatting.DARK_GRAY));
 
         } else {
-            components.add(Component.literal("Hold SHIFT for more info").withStyle(ChatFormatting.DARK_GRAY));
+            components.add(Component.translatable("tooltip.amethyst_dagger_item.shift").withStyle(ChatFormatting.DARK_GRAY));
         }
         super.appendHoverText(itemStack, level, components, tooltipFlag);
     }
+
+    // Гарантированный крит при эффекте
     @SubscribeEvent
     public static void onCriticalHitEvent(CriticalHitEvent event) {
         Player player = event.getEntity();
@@ -94,37 +103,41 @@ public class AmethystDaggerItem extends SwordItem {
         }
     }
 
+    // Использование предмета
     @Override
-    public  InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-        if (!level.isClientSide()) {
-            if (player.isShiftKeyDown()) {
-                EntityHitResult entityAtCursor = getEntityAtCursor(player, 12);
-                if (entityAtCursor != null) {
-                    if (!player.level.isClientSide) {
-                        double x = entityAtCursor.getEntity().getX();
-                        double y = entityAtCursor.getEntity().getY();
-                        double z = entityAtCursor.getEntity().getZ();
-
-                        Vec3 lookVector = entityAtCursor.getEntity().getLookAngle().scale(-1);
-
-                        double newX = x + lookVector.x();
-                        double newY = y + lookVector.y();
-                        double newZ = z + lookVector.z();
-
-                        player.lookAt(EntityAnchorArgument.Anchor.EYES, getEntityAtCursor(player, 16).getEntity().getEyePosition());
-                        player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 3 * 20, 2));
-                        player.addEffect(new MobEffectInstance(ModEffects.GUARANTEED_CRIT.get(), 10 * 20, 0));
-                        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3 * 20, 9));
-                        player.teleportTo(newX, newY+1, newZ);
-                        player.getItemInHand(interactionHand).hurtAndBreak(8, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
-                        player.getCooldowns().addCooldown(this,10*20);
-                    }
-                }
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+        // Проверка чтобы это было на сервере и то что нажат шифт у игрока
+        if (!level.isClientSide() && player.isShiftKeyDown()) {
+            // Опеределяем функцию
+            EntityHitResult entityAtCursor = getEntityAtCursor(player, 12);
+            // Если перед курсором есть энтити и игрок на сервере
+            if (entityAtCursor != null && !player.level.isClientSide) {
+                // Получаем координаты энитити на курсоре
+                double x = entityAtCursor.getEntity().getX();
+                double y = entityAtCursor.getEntity().getY();
+                double z = entityAtCursor.getEntity().getZ();
+                //Получаем её вектор взгляда в -1
+                Vec3 lookVector = entityAtCursor.getEntity().getLookAngle().scale(-1);
+                //Создаем координаты учитывая линию взгляда, и получаем координаты за её спиной
+                double newX = x + lookVector.x();
+                double newY = y + lookVector.y();
+                double newZ = z + lookVector.z();
+                //Добавляем эффекты
+                player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 3 * 20, 2));
+                player.addEffect(new MobEffectInstance(ModEffects.GUARANTEED_CRIT.get(), 10 * 20, 0));
+                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3 * 20, 9));
+                //Телепортируем игрока по координатам
+                player.teleportTo(newX, newY + 1, newZ);
+                //Ставим линию вгляда игрока
+                player.lookAt(EntityAnchorArgument.Anchor.EYES, getEntityAtCursor(player, 16).getEntity().getEyePosition());
+                //Тратим прочность за использование
+                player.getItemInHand(interactionHand).hurtAndBreak(8, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
             }
         }
+        //Ставим перезарядку на предмет
+        player.getCooldowns().addCooldown(this, 10 * 20);
         return super.use(level, player, interactionHand);
     }
-
     public AmethystDaggerItem(Tier p_43269_, int p_43270_, float p_43271_, Properties p_43272_) {
         super(p_43269_, p_43270_, p_43271_, p_43272_);
     }

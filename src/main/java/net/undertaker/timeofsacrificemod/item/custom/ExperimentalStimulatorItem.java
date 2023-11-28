@@ -1,5 +1,6 @@
 package net.undertaker.timeofsacrificemod.item.custom;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -12,18 +13,21 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
 import org.lwjgl.system.macosx.LibC;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
+//Продлеваем класс предмета
 public class ExperimentalStimulatorItem extends Item {
     public ExperimentalStimulatorItem(Properties properties) {
         super(properties);
     }
-
+    //Получаем информацию о игроке перед лицом
     private @Nullable EntityHitResult getPlayerAtCursor(Player player) {
         return ProjectileUtil.getEntityHitResult(
                 player.level,
@@ -33,7 +37,12 @@ public class ExperimentalStimulatorItem extends Item {
                 player.getBoundingBox().expandTowards(player.getLookAngle()).inflate(2),
                 Player.class::isInstance);
     }
-
+    //При использовании
+    @Override
+    public void appendHoverText(ItemStack itemStack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+        components.add(Component.translatable("tooltip.exp_stimulator_item").withStyle(ChatFormatting.DARK_GRAY));
+        super.appendHoverText(itemStack, level, components, tooltipFlag);
+    }
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if (!level.isClientSide()) {
@@ -46,22 +55,22 @@ public class ExperimentalStimulatorItem extends Item {
                 if (playerAtCursor != null) {
                     if (randomNumber <= 0.2) {
                         applyEffects((LivingEntity) playerAtCursor.getEntity());
-                        player.sendSystemMessage(Component.literal("He got extremely lucky, and he became a demi-god for a 30 seconds"));
+                        player.sendSystemMessage(Component.translatable("message.exp_stimulator_he_success"));
                         player.getCooldowns().addCooldown(this, 300 * 20);
                     } else {
                         applySideEffects((LivingEntity) playerAtCursor.getEntity());
-                        player.sendSystemMessage(Component.literal("He got an overdose. He need to take a rest for 30 minutes."));
+                        player.sendSystemMessage(Component.translatable("message.exp_stimulator_he_overdose"));
                         player.getCooldowns().addCooldown(this, 30 * 60 * 20);
                     }
                 } else {
                     if (randomNumber <= 0.2) {
                         applyEffects(player);
-                        player.sendSystemMessage(Component.literal("You got extremely lucky, and you became a demi-god for a 30 seconds"));
+                        player.sendSystemMessage(Component.translatable("message.exp_stimulator_success"));
                         player.getCooldowns().addCooldown(this, 300 * 20);
                     } else {
                         applySideEffects(player);
-                        player.sendSystemMessage(Component.literal("You got an overdose. You need to take a rest for 30 minutes."));
-                        player.getCooldowns().addCooldown(this, 600 * 20);
+                        player.sendSystemMessage(Component.translatable("message.exp_stimulator_overdose"));
+                        player.getCooldowns().addCooldown(this, 30 * 60 * 20);
                     }
                 }
                 level.playSound(null, player, ModSounds.STIMULATOR_USED.get(), SoundSource.AMBIENT, 1f, 1f);

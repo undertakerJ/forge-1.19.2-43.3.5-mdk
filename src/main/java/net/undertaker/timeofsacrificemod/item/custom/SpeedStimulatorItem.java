@@ -1,5 +1,6 @@
 package net.undertaker.timeofsacrificemod.item.custom;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
@@ -11,18 +12,21 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
 
 import javax.annotation.Nullable;
+import java.util.List;
 
+//Продлеваем класс предмета
 public class SpeedStimulatorItem extends Item {
 
     public SpeedStimulatorItem(Properties properties) {
         super(properties);
     }
-
+    //Получаем информацию о игроке перед лицом
     private @Nullable EntityHitResult getPlayerAtCursor(Player player) {
         return ProjectileUtil.getEntityHitResult(
                 player.level,
@@ -32,7 +36,12 @@ public class SpeedStimulatorItem extends Item {
                 player.getBoundingBox().expandTowards(player.getLookAngle()).inflate(2),
                 Player.class::isInstance);
     }
-
+    //При использовании
+    @Override
+    public void appendHoverText(ItemStack itemStack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+        components.add(Component.translatable("tooltip.speed_stimulator_item").withStyle(ChatFormatting.DARK_GRAY));
+        super.appendHoverText(itemStack, level, components, tooltipFlag);
+    }
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
         if (!level.isClientSide()) {
@@ -48,7 +57,7 @@ public class SpeedStimulatorItem extends Item {
                         player.getCooldowns().addCooldown(this, 30 * 20);
                     } else {
                         applySideEffects((LivingEntity) playerAtCursor.getEntity());
-                        player.sendSystemMessage(Component.literal("He got an overdose. He need to take a rest for 10 minutes."));
+                        player.sendSystemMessage(Component.translatable("message.stimulator_he_overdose"));
                         player.getCooldowns().addCooldown(this, 600 * 20);
                     }
                 } else {
@@ -57,7 +66,7 @@ public class SpeedStimulatorItem extends Item {
                         player.getCooldowns().addCooldown(this, 30 * 20);
                     } else {
                         applySideEffects(player);
-                        player.sendSystemMessage(Component.literal("You got an overdose. You need to take a rest for 10 minutes."));
+                        player.sendSystemMessage(Component.translatable("message.stimulator_overdose"));
                         player.getCooldowns().addCooldown(this, 600 * 20);
                     }
                 }
@@ -69,13 +78,13 @@ public class SpeedStimulatorItem extends Item {
 
     // Метод для применения эффектов на сущность
     private void applyEffects(LivingEntity livingEntity) {
-        // Добавляем эффект регенерации на 10 секунд с уровнем 4
-        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 10 * 20, 1));
+        // Добавляем эффект
+        livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 30 * 20, 1));
 
     }
 
     private void applySideEffects(LivingEntity livingEntity) {
-        // Добавляем эффект регенерации на 10 секунд с уровнем 4
+        // Добавляем эффект
         livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 15 * 20, 1));
         livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5 * 20, 3));
 
