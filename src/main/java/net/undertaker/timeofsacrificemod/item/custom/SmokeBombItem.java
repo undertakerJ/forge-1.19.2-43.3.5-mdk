@@ -36,7 +36,7 @@ public class SmokeBombItem extends Item  {
         if (!pPlayer.getAbilities().instabuild) {
             itemstack.shrink(1);
         }
-
+        pPlayer.getCooldowns().addCooldown(this,1800);
          return super.use(pLevel, pPlayer, pHand);
     }
 }
