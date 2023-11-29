@@ -14,6 +14,8 @@ import net.undertaker.timeofsacrificemod.entity.ModEntities;
 import net.undertaker.timeofsacrificemod.item.ModItems;
 
 public class SmokeBombEntity extends ThrowableItemProjectile {
+    private int duration = 600;
+    private int waitTime = 20;
     public  SmokeBombEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
 
         super(pEntityType, pLevel);
@@ -35,6 +37,7 @@ public  SmokeBombEntity(Level pLevel, LivingEntity livingEntity) {
             SmokeZoneEntity smokeZone = new SmokeZoneEntity(ModEntities.SMOKE_ZONE_ENTITY.get(), level);
             smokeZone.setPos(getBlockX(),getBlockY(),getBlockZ());
             this.level.addFreshEntity(smokeZone);
+
         }
         level.playSound((Player) null, getBlockX(), getBlockY(), getBlockZ(), SoundEvents.GLASS_BREAK, SoundSource.NEUTRAL, 0.5F, 0.4F);
         this.discard();
