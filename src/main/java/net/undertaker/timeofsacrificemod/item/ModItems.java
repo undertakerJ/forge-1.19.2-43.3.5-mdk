@@ -116,6 +116,8 @@ public class ModItems {
 
     public static final RegistryObject<Item> BANDAGE = ITEMS.register("bandage",
             () -> new BandageItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(8)));
+   public static final RegistryObject<Item> SMOKE_BOMB = ITEMS.register("smoke_bomb",
+            () -> new SmokeBombItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(16)));
     public static final RegistryObject<Item> HEALING_OINTMENT = ITEMS.register("healing_ointment",
             () -> new HealingOintmentItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(8)));
     public static final RegistryObject<Item> BANDAGE_WITH_OINTMENT = ITEMS.register("bandage_with_ointment",

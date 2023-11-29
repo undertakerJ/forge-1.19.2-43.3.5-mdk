@@ -1,6 +1,9 @@
 package net.undertaker.timeofsacrificemod;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -14,6 +17,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.undertaker.timeofsacrificemod.block.ModBlocks;
 import net.undertaker.timeofsacrificemod.effect.ModEffects;
+import net.undertaker.timeofsacrificemod.entity.ModEntities;
 import net.undertaker.timeofsacrificemod.item.ModItems;
 import net.undertaker.timeofsacrificemod.loot.ModLootModifiers;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
@@ -42,6 +46,8 @@ public class TimeOfSacrifice
 
         ModEffects.register(modEventBus);
 
+        ModEntities.register(modEventBus);
+
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
 
@@ -59,6 +65,11 @@ public class TimeOfSacrifice
     public static class ClientModEvents
     {
         @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {}
+        public static void onClientSetup(FMLClientSetupEvent event) {
+
+            EntityRenderers.register(ModEntities.SMOKE_BOMB_PROJECTILE.get(), ThrownItemRenderer::new);
+          //HERE AN ISSUE  EntityRenderers.register(ModEntities.SMOKE_ZONE_ENTITY.get(), EntityRenderer::new);
+
+        }
     }
 }
