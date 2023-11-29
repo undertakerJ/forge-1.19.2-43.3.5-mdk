@@ -18,7 +18,7 @@ public class ModEntities {
             ENTITY_TYPES.register("smoke_bomb_projectile", () -> EntityType.Builder.<SmokeBombEntity>of(SmokeBombEntity::new, MobCategory.MISC)
                     .sized(0.5f,0.5f).build("smoke_bomb_projectile"));
 public static final RegistryObject<EntityType<SmokeZoneEntity>> SMOKE_ZONE_ENTITY =
-            ENTITY_TYPES.register("smoke_zone", () -> EntityType.Builder.<SmokeZoneEntity>of(SmokeZoneEntity::new, MobCategory.MISC)
+            ENTITY_TYPES.register("smoke_zone", () -> EntityType.Builder.<SmokeZoneEntity>of(SmokeZoneEntity::new, MobCategory.AMBIENT)
                     .sized(5f,5f).build("smoke_zone"));
 
 
