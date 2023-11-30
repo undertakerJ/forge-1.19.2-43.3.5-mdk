@@ -16,6 +16,10 @@ public enum ModArmorMaterials implements ArmorMaterial {
             1f,0f, () ->
     {
         return Ingredient.of(ModItems.PLATINUM_INGOT.get());
+    }),
+    REINFORCED_SHADOW_CLOTH("reinforced_shadow_cloth", 25, new int[]{2,6,4,2}, 35, SoundEvents.ARMOR_EQUIP_IRON,
+            2f, 0.1f, () -> {
+        return Ingredient.of(ModItems.REINFORCED_SHADOW_CLOTH.get());
     });
     private final String name;
     private final int durabilityMultiplier;

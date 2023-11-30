@@ -10,6 +10,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
@@ -26,10 +27,14 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.undertaker.timeofsacrificemod.TimeOfSacrifice;
 import net.undertaker.timeofsacrificemod.effect.ModEffects;
+import net.undertaker.timeofsacrificemod.item.ModItems;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Predicate;
+
+import static net.minecraft.world.entity.EquipmentSlot.*;
+
 @Mod.EventBusSubscriber(modid = TimeOfSacrifice.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 // Продлеваем класс предмета
 public class AmethystDaggerItem extends SwordItem {
@@ -92,12 +97,22 @@ public class AmethystDaggerItem extends SwordItem {
     @SubscribeEvent
     public static void onCriticalHitEvent(CriticalHitEvent event) {
         Player player = event.getEntity();
+        MobEffectInstance critEffect = player.getEffect(ModEffects.GUARANTEED_CRIT.get());
         // Проверка  есть ли на игроке эффект Гарантированого Крита
-        if (player.hasEffect(ModEffects.GUARANTEED_CRIT.get())) {
+        if (critEffect != null && critEffect.getAmplifier() == 3) {
             // Разрешаем крит
             event.setResult((CriticalHitEvent.Result.ALLOW));
+            //Проверяем надет ли полный сет шадоу брони
+            boolean shadowFullSet = player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ModItems.SHADOW_ASSASSIN_HELMET.get() &&
+                    player.getItemBySlot(CHEST).getItem() == ModItems.SHADOW_ASSASSIN_CHESTPLATE.get() &&
+                    player.getItemBySlot(LEGS).getItem() == ModItems.SHADOW_ASSASSIN_LEGGINGS.get() &&
+                    player.getItemBySlot(FEET).getItem() == ModItems.SHADOW_ASSASSIN_BOOTS.get();
+            if(shadowFullSet){
+                // Модификатор крит урона для сета
+                event.setDamageModifier(4f);}
+            else {
             // Модификатор крит урона
-            event.setDamageModifier(2.5f);
+            event.setDamageModifier(2f);}
             // Очищаем эффекты у игрока
             player.removeEffect(ModEffects.GUARANTEED_CRIT.get());
         }
@@ -106,12 +121,9 @@ public class AmethystDaggerItem extends SwordItem {
     // Использование предмета
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+        EntityHitResult entityAtCursor = getEntityAtCursor(player, 16);
         // Проверка чтобы это было на сервере и то что нажат шифт у игрока
-        if (!level.isClientSide() && player.isShiftKeyDown()) {
-            // Опеределяем функцию
-            EntityHitResult entityAtCursor = getEntityAtCursor(player, 12);
-            // Если перед курсором есть энтити и игрок на сервере
-            if (entityAtCursor != null && !player.level.isClientSide) {
+        if (!level.isClientSide() && player.isShiftKeyDown() && entityAtCursor != null) {
                 // Получаем координаты энитити на курсоре
                 double x = entityAtCursor.getEntity().getX();
                 double y = entityAtCursor.getEntity().getY();
@@ -124,18 +136,18 @@ public class AmethystDaggerItem extends SwordItem {
                 double newZ = z + lookVector.z();
                 //Добавляем эффекты
                 player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 3 * 20, 2));
-                player.addEffect(new MobEffectInstance(ModEffects.GUARANTEED_CRIT.get(), 10 * 20, 0));
+                player.addEffect(new MobEffectInstance(ModEffects.GUARANTEED_CRIT.get(), 10 * 20, 3));
                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 3 * 20, 9));
+            //Ставим перезарядку на предмет
+            player.getCooldowns().addCooldown(this, 10 * 20);
                 //Телепортируем игрока по координатам
-                player.teleportTo(newX, newY + 1, newZ);
+                player.teleportTo(newX, newY , newZ);
                 //Ставим линию вгляда игрока
                 player.lookAt(EntityAnchorArgument.Anchor.EYES, getEntityAtCursor(player, 16).getEntity().getEyePosition());
                 //Тратим прочность за использование
                 player.getItemInHand(interactionHand).hurtAndBreak(8, player, p -> p.broadcastBreakEvent(InteractionHand.MAIN_HAND));
-            }
         }
-        //Ставим перезарядку на предмет
-        player.getCooldowns().addCooldown(this, 10 * 20);
+
         return super.use(level, player, interactionHand);
     }
     public AmethystDaggerItem(Tier p_43269_, int p_43270_, float p_43271_, Properties p_43272_) {

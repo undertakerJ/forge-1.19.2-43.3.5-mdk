@@ -82,6 +82,21 @@ public class ModItems {
             () -> new ArmorItem(ModArmorMaterials.PLATINUM, EquipmentSlot.FEET,
                     new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
 
+     public static final RegistryObject<Item> SHADOW_ASSASSIN_HELMET = ITEMS.register("shadow_assassin_helmet",
+            () -> new ShadowAssassinArmorItem(ModArmorMaterials.REINFORCED_SHADOW_CLOTH, EquipmentSlot.HEAD,
+                    new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+    public static final RegistryObject<Item> SHADOW_ASSASSIN_CHESTPLATE = ITEMS.register("shadow_assassin_chestplate",
+            () -> new ShadowAssassinArmorItem(ModArmorMaterials.REINFORCED_SHADOW_CLOTH, EquipmentSlot.CHEST,
+                    new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+    public static final RegistryObject<Item> SHADOW_ASSASSIN_LEGGINGS = ITEMS.register("shadow_assassin_leggings",
+            () -> new ShadowAssassinArmorItem(ModArmorMaterials.REINFORCED_SHADOW_CLOTH, EquipmentSlot.LEGS,
+                    new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+    public static final RegistryObject<Item> SHADOW_ASSASSIN_BOOTS = ITEMS.register("shadow_assassin_boots",
+            () -> new ShadowAssassinArmorItem(ModArmorMaterials.REINFORCED_SHADOW_CLOTH, EquipmentSlot.FEET,
+                    new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+
+
+
     //ITEMS
     public static final RegistryObject<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
@@ -92,6 +107,14 @@ public class ModItems {
     public static final RegistryObject<Item> REGENERATION_CATALYST = ITEMS.register("regeneration_catalyst",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> CLOTH = ITEMS.register("cloth",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+     public static final RegistryObject<Item> SHADOW_CLOTH = ITEMS.register("shadow_cloth",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+     public static final RegistryObject<Item> REINFORCED_CLOTH = ITEMS.register("reinforced_cloth",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+     public static final RegistryObject<Item> REINFORCED_SHADOW_CLOTH = ITEMS.register("reinforced_shadow_cloth",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
+   public static final RegistryObject<Item> PLATINUM_PLATE = ITEMS.register("platinum_plate",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> PLATINUM_ORE = ITEMS.register("raw_platinum_ore",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));

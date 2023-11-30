@@ -1,6 +1,9 @@
 {
   "item.timeofsacrifice.platinum_ingot": "Platinum Ingot",
   "item.timeofsacrifice.cloth": "Cloth",
+  "item.timeofsacrifice.shadow_cloth": "Shadow Cloth",
+  "item.timeofsacrifice.reinforced_cloth": "Reinforced Cloth",
+  "item.timeofsacrifice.reinforced_shadow_cloth": "Reinforced Shadow Cloth",
   "item.timeofsacrifice.raw_platinum_ore": "Raw Platinum Ore",
   "item.timeofsacrifice.speed_stimulator": "Speed Stimulator",
   "item.timeofsacrifice.strength_stimulator": "Strength Stimulator",
@@ -19,6 +22,7 @@
   "item.timeofsacrifice.regeneration_catalyst": "Regeneration Catalyst",
   "item.timeofsacrifice.healing_ointment": "Healing Ointment",
   "item.timeofsacrifice.platinum_sword": "Platinum Sword",
+  "item.timeofsacrifice.platinum_plate": "Platinum Plate",
   "item.timeofsacrifice.platinum_pickaxe": "Platinum Pickaxe",
   "item.timeofsacrifice.platinum_axe": "Platinum Axe",
   "item.timeofsacrifice.platinum_shovel": "Platinum Shovel",
@@ -27,11 +31,14 @@
   "item.timeofsacrifice.platinum_chestplate": "Platinum Chestplate",
   "item.timeofsacrifice.platinum_leggings": "Platinum Leggings",
   "item.timeofsacrifice.platinum_boots": "Platinum Boots",
+  "item.timeofsacrifice.shadow_assassin_helmet": "Shadow Assassin Helmet",
+  "item.timeofsacrifice.shadow_assassin_chestplate": "Shadow Assassin Chestplate",
+  "item.timeofsacrifice.shadow_assassin_leggings": "Shadow Assassin Leggings",
+  "item.timeofsacrifice.shadow_assassin_boots": "Shadow Assassin Boots",
   "item.timeofsacrifice.bandage_with_ointment": "Bandage with Ointment",
-"item.timeofsacrifice.smoke_bomb": "Smoke Bomb",
+  "item.timeofsacrifice.smoke_bomb": "Smoke Bomb",
 
   "message.dragon_slayer_item": "Looks like you dont have enough 'Strength' to lift a sword.",
-
   "message.stimulator_overdose": "You got an overdose. You need to take a rest for 10 minutes.",
   "message.stimulator_he_overdose": "He got an overdose. You need to take a rest for 10 minutes.",
   "message.exp_stimulator_he_overdose": "He got an overdose. You need to take a rest for 30 minutes.",
@@ -48,13 +55,11 @@
   "tooltip.amethyst_dagger_item6": "Teleport consumes 8 durability each time. Reload - 10 seconds.",
   "tooltip.amethyst_dagger_item7": "Guaranteed Crit - make your first attack critical",
   "tooltip.amethyst_dagger_item.shift": "Hold SHIFT for more info",
-
   "tooltip.dragon_slayer_item1": "Requires Strength effect to use. With 50% applies Slowness II and",
   "tooltip.dragon_slayer_item2": "Armor Shred IV, players get additional Confusion effect, for 30 seconds.",
   "tooltip.dragon_slayer_item3": "Deal additional 25 damage to undead.",
   "tooltip.dragon_slayer_item4": "Armor Shred - reduces armor for 10% each level of debuff.",
   "tooltip.dragon_slayer_item.shift": "Hold SHIFT for more info",
-
   "tooltip.regeneration_stimulator_item": "Applies Regeneration II for 30 seconds on use with 90% chance.",
   "tooltip.speed_stimulator_item": "Applies Speed II for 30 seconds on use with 90% chance.",
   "tooltip.strength_stimulator_item": "Applies Strength II for 30 seconds on use with 90% chance.",
@@ -63,7 +68,6 @@
 
   "effect.timeofsacrifice.armor_shred": "Armor Shred",
   "effect.timeofsacrifice.guaranteed_crit": "Guaranteed Crit",
-
   "block.timeofsacrifice.platinum_ore": "Platinum Ore",
   "block.timeofsacrifice.platinum_block": "Block of Platinum",
   "block.timeofsacrifice.deepslate_platinum_ore": "Deepslate Platinum Ore",
