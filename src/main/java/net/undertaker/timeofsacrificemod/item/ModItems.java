@@ -7,6 +7,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.undertaker.timeofsacrificemod.TimeOfSacrifice;
+import net.undertaker.timeofsacrificemod.block.ModBlocks;
 import net.undertaker.timeofsacrificemod.item.custom.*;
 
 
@@ -56,6 +57,16 @@ public class ModItems {
                                     .rarity(Rarity.EPIC)
                     )
     );
+    public static final RegistryObject<Item> FROST_BLADE = ITEMS.register("frost_blade",
+            () ->
+                    new FrostBladeItem(Tiers.DIAMOND, 3, -2.4f,
+                            new Item.Properties()
+                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                                    .stacksTo(1)
+                                    .defaultDurability(784)
+                                    .rarity(Rarity.UNCOMMON)
+                    )
+    );
     public static final RegistryObject<Item> AMETHYST_DAGGER = ITEMS.register("amethyst_dagger",
             () ->
                     new AmethystDaggerItem(Tiers.DIAMOND, 2, -2F,
@@ -96,7 +107,6 @@ public class ModItems {
                     new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
 
 
-
     //ITEMS
     public static final RegistryObject<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
@@ -124,6 +134,8 @@ public class ModItems {
             () -> new SpeedStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> REGENERATION_STIMULATOR = ITEMS.register("regeneration_stimulator",
             () -> new RegenerationStimulatorItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
+     public static final RegistryObject<Item> THE_LIGHT_ROD = ITEMS.register("the_light_rod",
+            () -> new TheLightRodItem(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB).stacksTo(1)));
     public static final RegistryObject<Item> AN_AMAZING_METAL_BALK = ITEMS.register("an_amazing_metal_balk",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> AN_AMAZING_METAL_BALK_COVERED_WITH_PLATINUM = ITEMS.register("an_amazing_metal_balk_covered_with_platinum",

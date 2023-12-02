@@ -37,6 +37,8 @@
   "item.timeofsacrifice.shadow_assassin_boots": "Shadow Assassin Boots",
   "item.timeofsacrifice.bandage_with_ointment": "Bandage with Ointment",
   "item.timeofsacrifice.smoke_bomb": "Smoke Bomb",
+  "item.timeofsacrifice.frost_blade": "Frost Blade",
+  "item.timeofsacrifice.the_light_rod": "The Light Rod",
 
   "message.dragon_slayer_item": "Looks like you dont have enough 'Strength' to lift a sword.",
   "message.stimulator_overdose": "You got an overdose. You need to take a rest for 10 minutes.",
@@ -55,7 +57,8 @@
   "tooltip.amethyst_dagger_item6": "Teleport consumes 8 durability each time. Reload - 10 seconds.",
   "tooltip.amethyst_dagger_item7": "Guaranteed Crit - make your first attack critical",
   "tooltip.amethyst_dagger_item.shift": "Hold SHIFT for more info",
-  "tooltip.dragon_slayer_item1": "Requires Strength effect to use. With 50% applies Slowness II and",
+  "tooltip.dragon_slayer_item": "Looks like you don't have enough \"Strength\" ",
+ "tooltip.dragon_slayer_item1": "Requires Strength effect to use. With 50% applies Slowness II and",
   "tooltip.dragon_slayer_item2": "Armor Shred IV, players get additional Confusion effect, for 30 seconds.",
   "tooltip.dragon_slayer_item3": "Deal additional 25 damage to undead.",
   "tooltip.dragon_slayer_item4": "Armor Shred - reduces armor for 10% each level of debuff.",
@@ -68,9 +71,12 @@
 
   "effect.timeofsacrifice.armor_shred": "Armor Shred",
   "effect.timeofsacrifice.guaranteed_crit": "Guaranteed Crit",
+  "effect.timeofsacrifice.freeze": "Freeze",
+
   "block.timeofsacrifice.platinum_ore": "Platinum Ore",
   "block.timeofsacrifice.platinum_block": "Block of Platinum",
   "block.timeofsacrifice.deepslate_platinum_ore": "Deepslate Platinum Ore",
+  "block.timeofsacrifice.amethyst_sparkle_block": "Amethyst Sparkle",
 
   "sounds.timeofsacrifice.stimulator_used": "Stimulator Used",
   "sounds.timeofsacrifice.bandage_usage": "Using Bandage",

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "timeofsacrifice:item/the_light_rod_2d"
+  }
+}

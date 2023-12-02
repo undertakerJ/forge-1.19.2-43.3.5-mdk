@@ -18,10 +18,12 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.undertaker.timeofsacrificemod.block.ModBlocks;
 import net.undertaker.timeofsacrificemod.effect.ModEffects;
 import net.undertaker.timeofsacrificemod.entity.ModEntities;
+import net.undertaker.timeofsacrificemod.entity.client.AmethystSparkEntityRenderer;
 import net.undertaker.timeofsacrificemod.entity.client.SmokeZoneRenderer;
 import net.undertaker.timeofsacrificemod.entity.custom.SmokeZoneEntity;
 import net.undertaker.timeofsacrificemod.item.ModItems;
 import net.undertaker.timeofsacrificemod.loot.ModLootModifiers;
+import net.undertaker.timeofsacrificemod.particle.ModParticles;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
 import net.undertaker.timeofsacrificemod.world.feature.ModConfiguredFeatures;
 import net.undertaker.timeofsacrificemod.world.feature.ModPlacedFeatures;
@@ -50,6 +52,8 @@ public class TimeOfSacrifice
 
         ModEntities.register(modEventBus);
 
+        ModParticles.register(modEventBus);
+
         ModConfiguredFeatures.register(modEventBus);
         ModPlacedFeatures.register(modEventBus);
 
@@ -69,7 +73,10 @@ public class TimeOfSacrifice
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+
             EntityRenderers.register(ModEntities.SMOKE_BOMB_PROJECTILE.get(), ThrownItemRenderer::new);
+
+            EntityRenderers.register(ModEntities.AMETHYST_SPARK_ENTITY.get(), AmethystSparkEntityRenderer::new);
           //HERE AN ISSUE
            EntityRenderers.register(ModEntities.SMOKE_ZONE_ENTITY.get(), SmokeZoneRenderer::new);
 

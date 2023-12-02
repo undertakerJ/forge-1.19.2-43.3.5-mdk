@@ -1,6 +1,7 @@
 package net.undertaker.timeofsacrificemod.effect;
 
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,6 +19,8 @@ public class ModEffects extends MobEffects {
             () -> new ArmorShredEffect());
     public static final RegistryObject<MobEffect> GUARANTEED_CRIT = MOB_EFFECTS.register("guaranteed_crit",
             () -> new GuaranteedCritEffect());
+    public static final RegistryObject<MobEffect> FREEZE = MOB_EFFECTS.register("freeze",
+            () -> new FreezeEffect(MobEffectCategory.HARMFUL, 3124687));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

@@ -10,13 +10,17 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.undertaker.timeofsacrificemod.entity.ModEntities;
+import net.undertaker.timeofsacrificemod.item.ModItems;
 
 import java.util.List;
+
+import static net.minecraft.world.entity.EquipmentSlot.*;
 
 
 public class SmokeZoneEntity extends Entity {
@@ -61,8 +65,17 @@ public class SmokeZoneEntity extends Entity {
         }
         List<Player> players = this.level.getEntitiesOfClass(Player.class, this.getBoundingBox());
         for (Player player : players) {// Применение эффекта к игроку на секунду
-            player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 30, 0));
-            player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30, 0));
+            boolean shadowFullSet = player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ModItems.SHADOW_ASSASSIN_HELMET.get() &&
+                    player.getItemBySlot(CHEST).getItem() == ModItems.SHADOW_ASSASSIN_CHESTPLATE.get() &&
+                    player.getItemBySlot(LEGS).getItem() == ModItems.SHADOW_ASSASSIN_LEGGINGS.get() &&
+                    player.getItemBySlot(FEET).getItem() == ModItems.SHADOW_ASSASSIN_BOOTS.get();
+            if (!level.isClientSide && shadowFullSet) {
+                player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 30, 0));
+            } else {
+
+                player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 30, 0));
+                player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30, 0));
+            }
         }
         List<LivingEntity> entities = this.level.getEntitiesOfClass(LivingEntity.class, this.getBoundingBox().inflate(16));
         for (LivingEntity entity : entities) {

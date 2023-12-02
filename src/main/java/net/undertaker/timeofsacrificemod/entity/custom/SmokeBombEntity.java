@@ -14,8 +14,6 @@ import net.undertaker.timeofsacrificemod.entity.ModEntities;
 import net.undertaker.timeofsacrificemod.item.ModItems;
 
 public class SmokeBombEntity extends ThrowableItemProjectile {
-    private int duration = 600;
-    private int waitTime = 20;
     public  SmokeBombEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
 
         super(pEntityType, pLevel);
