@@ -2,6 +2,8 @@ package net.undertaker.timeofsacrificemod.item;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,6 +19,12 @@ public class ModItems {
 
 
     //TOOLS
+    public static final RegistryObject<Item> DWARFS_HAMMER = ITEMS.register("dwarfs_hammer",
+            () -> new DwarfsHammerItem(Tiers.DIAMOND, 2, -3f,
+                    new Item.Properties()
+                            .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                            .stacksTo(1)
+                            .durability(-1)));
     public static final RegistryObject<Item> PLATINUM_SWORD = ITEMS.register("platinum_sword",
             () -> new SwordItem(Tiers.DIAMOND, 3, -2.4f,
                     new Item.Properties()
