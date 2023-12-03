@@ -20,4 +20,5 @@ public class ModEventBusEvents {
         Minecraft.getInstance().particleEngine.register(ModParticles.SPECIAL_SPARK_PARTICLES.get(),
         SpecialSparkleParticles.Provider::new);
     }
+
 }

@@ -4,25 +4,31 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.ToolActions;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.undertaker.timeofsacrificemod.TimeOfSacrifice;
+import net.undertaker.timeofsacrificemod.item.ModItems;
 
+import java.util.Iterator;
 
+@Mod.EventBusSubscriber(modid = TimeOfSacrifice.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DwarfsHammerItem extends PickaxeItem {
     public DwarfsHammerItem(Tier tier, int attackDamage, float attackSpeed, Properties properties) {
         super(tier, attackDamage, attackSpeed, properties);
@@ -115,5 +121,57 @@ public class DwarfsHammerItem extends PickaxeItem {
         return true;
     }
 
+    @SubscribeEvent
+    public static void storeProtectedItems(LivingDeathEvent event) {
+        if (!(event.getEntity() instanceof Player player)) return;
+        Inventory inventory = player.getInventory();
+        ItemStack dwarfsHammer = new ItemStack(ModItems.DWARFS_HAMMER.get());
 
+        for (int slot = 0; slot < 41; slot++) {
+            ItemStack stack = inventory.getItem(slot);
+            if (stack.getItem() == dwarfsHammer.getItem()) {
+                addProtectedItem(player, slot, stack);
+            }
+        }
+    }
+
+    private static void addProtectedItem(Player player, int slot, ItemStack stack) {
+        CompoundTag data = player.getPersistentData();
+        if (!data.contains("ProtectedItems")) {
+            data.put("ProtectedItems", new CompoundTag());
+        }
+        CompoundTag protectedItemsTag = data.getCompound("ProtectedItems");
+        protectedItemsTag.put("Slot" + slot, stack.save(new CompoundTag()));
+    }
+
+    @SubscribeEvent
+    public static void protectItemsFromDropping(LivingDropsEvent event) {
+        CompoundTag data = event.getEntity().getPersistentData();
+        if (!data.contains("ProtectedItems")) return;
+        CompoundTag protectedItemsTag = data.getCompound("ProtectedItems");
+        for (int slot = 0; slot < 41; slot++) {
+            if (!protectedItemsTag.contains("Slot" + slot)) continue;
+            ItemStack protectedStack = ItemStack.of(protectedItemsTag.getCompound("Slot" + slot));
+            Iterator<ItemEntity> iterator = event.getDrops().iterator();
+            while (iterator.hasNext()) {
+                ItemEntity item = iterator.next();
+                if (ItemStack.matches(protectedStack, item.getItem())) {
+                    iterator.remove();
+                    break;
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void restoreProtectedItems(PlayerEvent.Clone event) {
+        CompoundTag data = event.getOriginal().getPersistentData();
+        if (!data.contains("ProtectedItems")) return;
+        CompoundTag protectedItemsTag = data.getCompound("ProtectedItems");
+        for (int slot = 0; slot < 41; slot++) {
+            if (!protectedItemsTag.contains("Slot" + slot)) continue;
+            ItemStack protectedStack = ItemStack.of(protectedItemsTag.getCompound("Slot" + slot));
+            event.getEntity().getInventory().setItem(slot, protectedStack);
+        }
+    }
 }
