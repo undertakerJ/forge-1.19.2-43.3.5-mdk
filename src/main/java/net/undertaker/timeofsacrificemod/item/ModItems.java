@@ -20,7 +20,7 @@ public class ModItems {
 
     //TOOLS
     public static final RegistryObject<Item> DWARFS_HAMMER = ITEMS.register("dwarfs_hammer",
-            () -> new DwarfsHammerItem(Tiers.DIAMOND, 2, -3f,
+            () -> new DwarfsHammerItem(Tiers.DIAMOND, 4, -3f,
                     new Item.Properties()
                             .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                             .stacksTo(1)

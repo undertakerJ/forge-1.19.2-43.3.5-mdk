@@ -39,9 +39,9 @@
   "item.timeofsacrifice.smoke_bomb": "Smoke Bomb",
   "item.timeofsacrifice.frost_blade": "Frost Blade",
   "item.timeofsacrifice.the_light_rod": "The Light Rod",
- "item.timeofsacrifice.dwarfs_hammer": "The Dwarf's Hammer",
+  "item.timeofsacrifice.dwarfs_hammer": "The Dwarf's Hammer",
 
-  "death.nigger": "%1$s died due to trying to stole SaltFairy's item",
+  "death.attack.timeofsacrifice_wrong_player_hammer": "%1$s died unable to withstand the power of the SaltFairy's artifact",
 
   "message.dragon_slayer_item": "Looks like you dont have enough 'Strength' to lift a sword.",
   "message.stimulator_overdose": "You got an overdose. You need to take a rest for 10 minutes.",

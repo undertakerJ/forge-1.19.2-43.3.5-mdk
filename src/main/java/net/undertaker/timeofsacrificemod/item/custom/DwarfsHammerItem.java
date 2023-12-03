@@ -4,44 +4,41 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.undertaker.timeofsacrificemod.TimeOfSacrifice;
-import net.undertaker.timeofsacrificemod.item.ModItems;
 
-import java.util.Iterator;
 
-@Mod.EventBusSubscriber(modid = TimeOfSacrifice.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class DwarfsHammerItem extends PickaxeItem {
     public DwarfsHammerItem(Tier tier, int attackDamage, float attackSpeed, Properties properties) {
         super(tier, attackDamage, attackSpeed, properties);
         MinecraftForge.EVENT_BUS.register(this);
 
     }
-
+    public static final DamageSource THIEF_HAMMER = (new DamageSource(TimeOfSacrifice.MOD_ID + "_wrong_player_hammer").bypassArmor().bypassMagic());
     @SubscribeEvent
     public void onBlockBreak(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
         ItemStack heldItem = player.getMainHandItem();
-        if(!player.getName().contains(Component.literal("SaltFairy"))){
-            player.die(DamageSource.MAGIC);
+        if (!player.getName().contains(Component.literal("SaltFairy")) && heldItem.getItem() instanceof DwarfsHammerItem) {
+
+            player.hurt(THIEF_HAMMER.bypassInvul(), 9999);
         }
         if (heldItem.getItem() instanceof DwarfsHammerItem &&
                 !player.isShiftKeyDown() &&
@@ -49,12 +46,25 @@ public class DwarfsHammerItem extends PickaxeItem {
             breakBlocksInArea(event);
             CompoundTag tag = heldItem.getOrCreateTag();
             tag.putBoolean("Unbreakable", true);
-
         }
-
-
     }
-
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
+        if (!level.isClientSide() && player.isShiftKeyDown()) {
+            ItemStack heldItem = player.getMainHandItem();
+            if (!player.getName().contains(Component.literal("SaltFairy")) && heldItem.getItem() instanceof DwarfsHammerItem) {
+                player.hurt(THIEF_HAMMER.bypassInvul(), 9999);
+            }
+            player.getCooldowns().addCooldown(this, 10 * 60 * 20);
+            player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 5 * 60 * 20, 3));
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 5 * 60 * 20, 1));
+            player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 5 * 60 * 20, 3));
+            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 5 * 60 * 20, 0));
+            player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 3 * 60 * 20, 3));
+            player.addEffect(new MobEffectInstance(MobEffects.UNLUCK, 3 * 60 * 20, 3));
+        }
+        return super.use(level, player, interactionHand);
+    }
     private void breakBlocksInArea(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
         Vec3 eyePosition = player.getEyePosition();
@@ -92,8 +102,6 @@ public class DwarfsHammerItem extends PickaxeItem {
                 break;
         }
     }
-
-
     private void breakBlocksHorizontally(Player player, BlockPos pos, int radiusX, int radiusZ) {
         for (int i = -radiusX; i <= radiusX; i++) {
             for (int j = -radiusZ; j <= radiusZ; j++) {
@@ -102,7 +110,6 @@ public class DwarfsHammerItem extends PickaxeItem {
             }
         }
     }
-
     private void breakBlocksVertically(Player player, BlockPos pos, int radiusX, int radiusY, int radiusZ) {
         for (int i = -radiusX; i <= radiusX; i++) {
             for (int j = -radiusY; j <= radiusY; j++) {
@@ -113,65 +120,9 @@ public class DwarfsHammerItem extends PickaxeItem {
             }
         }
     }
-
     @Override
     public boolean isCorrectToolForDrops(BlockState state) {
-        Block block = state.getBlock();
         // Проверяем, подходит ли инструмент для дропа блока
         return true;
-    }
-
-    @SubscribeEvent
-    public static void storeProtectedItems(LivingDeathEvent event) {
-        if (!(event.getEntity() instanceof Player player)) return;
-        Inventory inventory = player.getInventory();
-        ItemStack dwarfsHammer = new ItemStack(ModItems.DWARFS_HAMMER.get());
-
-        for (int slot = 0; slot < 41; slot++) {
-            ItemStack stack = inventory.getItem(slot);
-            if (stack.getItem() == dwarfsHammer.getItem()) {
-                addProtectedItem(player, slot, stack);
-            }
-        }
-    }
-
-    private static void addProtectedItem(Player player, int slot, ItemStack stack) {
-        CompoundTag data = player.getPersistentData();
-        if (!data.contains("ProtectedItems")) {
-            data.put("ProtectedItems", new CompoundTag());
-        }
-        CompoundTag protectedItemsTag = data.getCompound("ProtectedItems");
-        protectedItemsTag.put("Slot" + slot, stack.save(new CompoundTag()));
-    }
-
-    @SubscribeEvent
-    public static void protectItemsFromDropping(LivingDropsEvent event) {
-        CompoundTag data = event.getEntity().getPersistentData();
-        if (!data.contains("ProtectedItems")) return;
-        CompoundTag protectedItemsTag = data.getCompound("ProtectedItems");
-        for (int slot = 0; slot < 41; slot++) {
-            if (!protectedItemsTag.contains("Slot" + slot)) continue;
-            ItemStack protectedStack = ItemStack.of(protectedItemsTag.getCompound("Slot" + slot));
-            Iterator<ItemEntity> iterator = event.getDrops().iterator();
-            while (iterator.hasNext()) {
-                ItemEntity item = iterator.next();
-                if (ItemStack.matches(protectedStack, item.getItem())) {
-                    iterator.remove();
-                    break;
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void restoreProtectedItems(PlayerEvent.Clone event) {
-        CompoundTag data = event.getOriginal().getPersistentData();
-        if (!data.contains("ProtectedItems")) return;
-        CompoundTag protectedItemsTag = data.getCompound("ProtectedItems");
-        for (int slot = 0; slot < 41; slot++) {
-            if (!protectedItemsTag.contains("Slot" + slot)) continue;
-            ItemStack protectedStack = ItemStack.of(protectedItemsTag.getCompound("Slot" + slot));
-            event.getEntity().getInventory().setItem(slot, protectedStack);
-        }
     }
 }

@@ -35,7 +35,6 @@ import java.util.function.Predicate;
 
 import static net.minecraft.world.entity.EquipmentSlot.*;
 
-@Mod.EventBusSubscriber(modid = TimeOfSacrifice.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 // Продлеваем класс предмета
 public class AmethystDaggerItem extends SwordItem {
     // Отключаем разящий удар
@@ -91,31 +90,6 @@ public class AmethystDaggerItem extends SwordItem {
             components.add(Component.translatable("tooltip.amethyst_dagger_item.shift").withStyle(ChatFormatting.DARK_GRAY));
         }
         super.appendHoverText(itemStack, level, components, tooltipFlag);
-    }
-
-    // Гарантированный крит при эффекте
-    @SubscribeEvent
-    public static void onCriticalHitEvent(CriticalHitEvent event) {
-        Player player = event.getEntity();
-        MobEffectInstance critEffect = player.getEffect(ModEffects.GUARANTEED_CRIT.get());
-        // Проверка  есть ли на игроке эффект Гарантированого Крита
-        if (critEffect != null && critEffect.getAmplifier() == 3) {
-            // Разрешаем крит
-            event.setResult((CriticalHitEvent.Result.ALLOW));
-            //Проверяем надет ли полный сет шадоу брони
-            boolean shadowFullSet = player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ModItems.SHADOW_ASSASSIN_HELMET.get() &&
-                    player.getItemBySlot(CHEST).getItem() == ModItems.SHADOW_ASSASSIN_CHESTPLATE.get() &&
-                    player.getItemBySlot(LEGS).getItem() == ModItems.SHADOW_ASSASSIN_LEGGINGS.get() &&
-                    player.getItemBySlot(FEET).getItem() == ModItems.SHADOW_ASSASSIN_BOOTS.get();
-            if(shadowFullSet){
-                // Модификатор крит урона для сета
-                event.setDamageModifier(4f);}
-            else {
-            // Модификатор крит урона
-            event.setDamageModifier(2f);}
-            // Очищаем эффекты у игрока
-            player.removeEffect(ModEffects.GUARANTEED_CRIT.get());
-        }
     }
 
     // Использование предмета
