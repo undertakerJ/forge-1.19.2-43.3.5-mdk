@@ -17,6 +17,8 @@ public class ModEffects extends MobEffects {
 
     public static final RegistryObject<MobEffect> ARMOR_SHRED = MOB_EFFECTS.register("armor_shred",
             () -> new ArmorShredEffect());
+   public static final RegistryObject<MobEffect> ENTROPY = MOB_EFFECTS.register("entropy",
+            () -> new EntropyEffect(MobEffectCategory.HARMFUL, 3566733));
     public static final RegistryObject<MobEffect> GUARANTEED_CRIT = MOB_EFFECTS.register("guaranteed_crit",
             () -> new GuaranteedCritEffect());
     public static final RegistryObject<MobEffect> FREEZE = MOB_EFFECTS.register("freeze",

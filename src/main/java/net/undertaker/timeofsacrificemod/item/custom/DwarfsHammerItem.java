@@ -36,10 +36,10 @@ public class DwarfsHammerItem extends PickaxeItem {
     public void onBlockBreak(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();
         ItemStack heldItem = player.getMainHandItem();
-        if (!player.getName().contains(Component.literal("SaltFairy")) && heldItem.getItem() instanceof DwarfsHammerItem) {
-
-            player.hurt(THIEF_HAMMER.bypassInvul(), 9999);
-        }
+//        if (!player.getName().contains(Component.literal("SaltFairy")) && heldItem.getItem() instanceof DwarfsHammerItem) {
+//
+//            player.hurt(THIEF_HAMMER.bypassInvul(), 9999);
+//        }
         if (heldItem.getItem() instanceof DwarfsHammerItem &&
                 !player.isShiftKeyDown() &&
                 event.getState().getBlock() != Blocks.AIR) {
@@ -84,7 +84,15 @@ public class DwarfsHammerItem extends PickaxeItem {
                     BlockPos targetPos = pos.offset(i, j, k);
                     BlockState targetState = player.level.getBlockState(targetPos);
                     Block targetBlock = targetState.getBlock();
-                    if (targetBlock == Blocks.BEDROCK || targetBlock == Blocks.OBSIDIAN) {
+                    if (targetBlock == Blocks.BEDROCK ||
+                            targetBlock == Blocks.OBSIDIAN ||
+                            targetBlock == Blocks.REINFORCED_DEEPSLATE ||
+                            targetBlock == Blocks.END_GATEWAY ||
+                            targetBlock == Blocks.END_PORTAL ||
+                            targetBlock == Blocks.END_PORTAL_FRAME ||
+                            targetBlock == Blocks.BEACON ||
+                            targetBlock == Blocks.NETHER_PORTAL ||
+                            targetBlock == Blocks.ENCHANTING_TABLE) {
                         return;
                     }
                 }

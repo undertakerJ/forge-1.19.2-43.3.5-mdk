@@ -2,6 +2,9 @@ package net.undertaker.timeofsacrificemod.item;
 
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.GravelBlock;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -12,6 +15,8 @@ import net.undertaker.timeofsacrificemod.TimeOfSacrifice;
 import net.undertaker.timeofsacrificemod.block.ModBlocks;
 import net.undertaker.timeofsacrificemod.item.custom.*;
 
+import java.util.List;
+
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -20,7 +25,7 @@ public class ModItems {
 
     //TOOLS
     public static final RegistryObject<Item> DWARFS_HAMMER = ITEMS.register("dwarfs_hammer",
-            () -> new DwarfsHammerItem(Tiers.DIAMOND, 4, -3f,
+            () -> new DwarfsHammerItem(Tiers.IRON,4, -3f,
                     new Item.Properties()
                             .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                             .stacksTo(1)
@@ -83,6 +88,14 @@ public class ModItems {
                                     .stacksTo(1)
                                     .defaultDurability(334)
                                     .rarity(Rarity.RARE)));
+public static final RegistryObject<Item> REALITY_DISTORTION_GLOVE = ITEMS.register("reality_distortion_glove",
+            () ->
+                    new RealityDistortionGloveItem(Tiers.NETHERITE, 0, -1F,
+                            new Item.Properties()
+                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                                    .stacksTo(1)
+                                    .defaultDurability(500)
+                                    .rarity(Rarity.EPIC)));
 
 
 

@@ -40,10 +40,12 @@
   "item.timeofsacrifice.frost_blade": "Frost Blade",
   "item.timeofsacrifice.the_light_rod": "The Light Rod",
   "item.timeofsacrifice.dwarfs_hammer": "The Dwarf's Hammer",
+  "item.timeofsacrifice.reality_distortion_glove": "Reality Distortion Glove",
 
   "death.attack.timeofsacrifice_wrong_player_hammer": "%1$s died unable to withstand the power of the SaltFairy's artifact",
+  "death.attack.timeofsacrifice_entropy_effect": "%1$s gone, reduced to atoms",
 
-  "message.dragon_slayer_item": "Looks like you dont have enough 'Strength' to lift a sword.",
+  "message.dragonslayer_item": "Looks like you dont have enough 'Strength' to lift a sword.",
   "message.stimulator_overdose": "You got an overdose. You need to take a rest for 10 minutes.",
   "message.stimulator_he_overdose": "He got an overdose. You need to take a rest for 10 minutes.",
   "message.exp_stimulator_he_overdose": "He got an overdose. You need to take a rest for 30 minutes.",
@@ -61,7 +63,7 @@
   "tooltip.amethyst_dagger_item7": "Guaranteed Crit - make your first attack critical",
   "tooltip.amethyst_dagger_item.shift": "Hold SHIFT for more info",
   "tooltip.dragon_slayer_item": "Looks like you don't have enough \"Strength\" ",
- "tooltip.dragon_slayer_item1": "Requires Strength effect to use. With 50% applies Slowness II and",
+  "tooltip.dragon_slayer_item1": "Requires Strength effect to use. With 50% applies Slowness II and",
   "tooltip.dragon_slayer_item2": "Armor Shred IV, players get additional Confusion effect, for 30 seconds.",
   "tooltip.dragon_slayer_item3": "Deal additional 25 damage to undead.",
   "tooltip.dragon_slayer_item4": "Armor Shred - reduces armor for 10% each level of debuff.",
@@ -72,9 +74,25 @@
   "tooltip.exp_stimulator_item": "Applies all buffs VI with 20% chance for 30 seconds, other 80% debuffs.",
   "tooltip.ultimate_stimulator_item": "Applies Regeneration, Strength, Speed and Damage Resistance IV for 30 seconds",
 
+  "entity.pigEntity": "King of Pigs",
+
+  "rdg.item_mode0": "Reality Distortion Glove - CHAOS EFFECT",
+  "rdg.item_mode1": "Reality Distortion Glove - KINETIC DISTORTION",
+  "rdg.item_mode2": "Reality Distortion Glove - REPAIR",
+  "rdg.item_mode3": "Reality Distortion Glove - ENTROPY DEGRADATION",
+  "rdg.item_mode4": "Reality Distortion Glove - GIFT OF THE HEALER",
+
+  "key.category.timeofsacrifice.tos_options": "Time of Sacrifice",
+  "key.timeofsacrifice.mode_1": "Item Mode 1",
+  "key.timeofsacrifice.mode_2": "Item Mode 2",
+  "key.timeofsacrifice.mode_3": "Item Mode 3",
+  "key.timeofsacrifice.mode_4": "Item Mode 4",
+  "key.timeofsacrifice.mode_5": "Item Mode 5",
+
   "effect.timeofsacrifice.armor_shred": "Armor Shred",
   "effect.timeofsacrifice.guaranteed_crit": "Guaranteed Crit",
   "effect.timeofsacrifice.freeze": "Freeze",
+  "effect.timeofsacrifice.entropy": "Entropy",
 
   "block.timeofsacrifice.platinum_ore": "Platinum Ore",
   "block.timeofsacrifice.platinum_block": "Block of Platinum",

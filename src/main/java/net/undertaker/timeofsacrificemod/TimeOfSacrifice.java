@@ -23,6 +23,7 @@ import net.undertaker.timeofsacrificemod.entity.client.SmokeZoneRenderer;
 import net.undertaker.timeofsacrificemod.entity.custom.SmokeZoneEntity;
 import net.undertaker.timeofsacrificemod.item.ModItems;
 import net.undertaker.timeofsacrificemod.loot.ModLootModifiers;
+import net.undertaker.timeofsacrificemod.networking.ModMessages;
 import net.undertaker.timeofsacrificemod.particle.ModParticles;
 import net.undertaker.timeofsacrificemod.sound.ModSounds;
 import net.undertaker.timeofsacrificemod.world.feature.ModConfiguredFeatures;
@@ -64,7 +65,9 @@ public class TimeOfSacrifice
         MinecraftForge.EVENT_BUS.register(this);
 
     }
-    private void commonSetup(final FMLCommonSetupEvent event) {}
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        ModMessages.register();
+    }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

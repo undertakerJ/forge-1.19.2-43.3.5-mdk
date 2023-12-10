@@ -25,13 +25,14 @@ public class AmethystSparkleBlock extends Block {
     }
 
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        double d0 = (double) pPos.getX() + 0.5D;
-        double d1 = (double) pPos.getY() + 0.5D;
-        double d2 = (double) pPos.getZ() + 0.5D;
-        double y = (double) pPos.getY() + 0.5D;
-        pLevel.addParticle(ModParticles.SPARK_PARTICLES.get(), d0, d1, d2, 0.0D, 0.005D, 0.0D);
-        pLevel.addParticle(ModParticles.SPECIAL_SPARK_PARTICLES.get(), true, d0, y, d2, 0.0D, 0.00D, 0.0D);
-
+        if(pLevel.isClientSide) {
+            double d0 = (double) pPos.getX() + 0.5D;
+            double d1 = (double) pPos.getY() + 0.5D;
+            double d2 = (double) pPos.getZ() + 0.5D;
+            double y = (double) pPos.getY() + 0.5D;
+            pLevel.addParticle(ModParticles.SPARK_PARTICLES.get(), d0, d1, d2, 0.0D, 0.005D, 0.0D);
+            pLevel.addParticle(ModParticles.SPECIAL_SPARK_PARTICLES.get(), true, d0, y, d2, 0.0D, 0.00D, 0.0D);
+        }
     }
 
     public RenderShape getRenderShape(BlockState pState) {

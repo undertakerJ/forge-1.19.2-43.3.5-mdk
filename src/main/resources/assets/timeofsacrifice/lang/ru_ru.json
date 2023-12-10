@@ -28,6 +28,19 @@
   "item.timeofsacrifice.platinum_leggings": "Platinum Leggings",
   "item.timeofsacrifice.platinum_boots": "Platinum Boots",
   "item.timeofsacrifice.bandage_with_ointment": "Bandage with Ointment",
+  "item.timeofsacrifice.shadow_cloth": "Shadow Cloth",
+  "item.timeofsacrifice.reinforced_cloth": "Reinforced Cloth",
+  "item.timeofsacrifice.reinforced_shadow_cloth": "Reinforced Shadow Cloth",
+  "item.timeofsacrifice.platinum_plate": "Platinum Plate",
+  "item.timeofsacrifice.shadow_assassin_helmet": "Shadow Assassin Helmet",
+  "item.timeofsacrifice.shadow_assassin_chestplate": "Shadow Assassin Chestplate",
+  "item.timeofsacrifice.shadow_assassin_leggings": "Shadow Assassin Leggings",
+  "item.timeofsacrifice.shadow_assassin_boots": "Shadow Assassin Boots",
+  "item.timeofsacrifice.smoke_bomb": "Smoke Bomb",
+  "item.timeofsacrifice.frost_blade": "Frost Blade",
+  "item.timeofsacrifice.the_light_rod": "The Light Rod",
+  "item.timeofsacrifice.dwarfs_hammer": "The Dwarf's Hammer",
+  "item.timeofsacrifice.reality_distortion_glove": "Перчатка Реальностных Искажений",
 
   "message.dragon_slayer_item": "Looks like you dont have enough 'Strength' to lift a sword.",
 
@@ -48,6 +61,7 @@
   "tooltip.amethyst_dagger_item7": "Guaranteed Crit - make your first attack critical",
   "tooltip.amethyst_dagger_item.shift": "Hold SHIFT for more info",
 
+  "tooltip.dragon_slayer_item": "Looks like you don't have enough \"Strength\" ",
   "tooltip.dragon_slayer_item1": "Requires Strength effect to use. With 50% applies Slowness II and",
   "tooltip.dragon_slayer_item2": "Armor Shred IV, players get additional Confusion effect, for 30 seconds.",
   "tooltip.dragon_slayer_item3": "Deal additional 25 damage to undead.",
@@ -62,14 +76,18 @@
 
   "effect.timeofsacrifice.armor_shred": "Armor Shred",
   "effect.timeofsacrifice.guaranteed_crit": "Guaranteed Crit",
+  "effect.timeofsacrifice.freeze": "Freeze",
 
   "block.timeofsacrifice.platinum_ore": "Platinum Ore",
   "block.timeofsacrifice.platinum_block": "Block of Platinum",
   "block.timeofsacrifice.deepslate_platinum_ore": "Deepslate Platinum Ore",
+  "block.timeofsacrifice.amethyst_sparkle_block": "Amethyst Sparkle",
 
   "sounds.timeofsacrifice.stimulator_used": "Stimulator Used",
   "sounds.timeofsacrifice.bandage_usage": "Using Bandage",
 
-  "itemGroup.ToS_Tab": "Time of Sacrifice"
+  "itemGroup.ToS_Tab": "Time of Sacrifice",
+
+  "death.attack.timeofsacrifice_wrong_player_hammer": "%1$s died unable to withstand the power of the SaltFairy's artifact"
 
 }
