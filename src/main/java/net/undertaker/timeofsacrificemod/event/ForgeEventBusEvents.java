@@ -92,6 +92,7 @@ public class ForgeEventBusEvents {
         ItemStack tossedItemStack = event.getEntity().getItem();
         ItemStack dwarfsHammer = new ItemStack(DWARFS_HAMMER.get());
         ItemStack realityGlove = new ItemStack(REALITY_DISTORTION_GLOVE.get());
+
         // Блокируем выкидывание предмета
         if (ItemStack.isSame(dwarfsHammer, tossedItemStack)) {
             // отменяем событие, если предмет соответствует

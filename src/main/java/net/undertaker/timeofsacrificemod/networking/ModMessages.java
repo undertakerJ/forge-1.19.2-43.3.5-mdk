@@ -21,7 +21,7 @@ public class ModMessages {
     public static void register() {
         SimpleChannel net = NetworkRegistry.ChannelBuilder
                 .named(new ResourceLocation(TimeOfSacrifice.MOD_ID, "messages"))
-                .networkProtocolVersion(() -> "1.6")
+                .networkProtocolVersion(() -> "1.8")
                 .clientAcceptedVersions(s -> true)
                 .serverAcceptedVersions(s -> true)
                 .simpleChannel();
@@ -39,21 +39,25 @@ public class ModMessages {
                 .encoder(ChangeItemMode0C2SPacket::toBytes)
                 .consumerMainThread(ChangeItemMode0C2SPacket::handle)
                 .add();
+
         net.messageBuilder(ChangeItemMode1C2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(ChangeItemMode1C2SPacket::new)
                 .encoder(ChangeItemMode1C2SPacket::toBytes)
                 .consumerMainThread(ChangeItemMode1C2SPacket::handle)
                 .add();
+
         net.messageBuilder(ChangeItemMode2C2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(ChangeItemMode2C2SPacket::new)
                 .encoder(ChangeItemMode2C2SPacket::toBytes)
                 .consumerMainThread(ChangeItemMode2C2SPacket::handle)
                 .add();
+
         net.messageBuilder(ChangeItemMode3C2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(ChangeItemMode3C2SPacket::new)
                 .encoder(ChangeItemMode3C2SPacket::toBytes)
                 .consumerMainThread(ChangeItemMode3C2SPacket::handle)
                 .add();
+
         net.messageBuilder(ChangeItemMode4C2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(ChangeItemMode4C2SPacket::new)
                 .encoder(ChangeItemMode4C2SPacket::toBytes)

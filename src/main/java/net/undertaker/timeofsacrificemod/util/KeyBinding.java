@@ -22,5 +22,9 @@ public class KeyBinding {
     public static final String KEY_MODE_5 = "key.timeofsacrifice.mode_5";
     public static final KeyMapping MODE_5_KEY = new KeyMapping(KEY_MODE_5, KeyConflictContext.IN_GAME,
             InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_B, KEY_CATEGORY_TOS);
+    public static final String KEY_DASH = "key.timeofsacrifice.dash";
+    public static final KeyMapping DASH_KEY = new KeyMapping(KEY_DASH, KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_LEFT_ALT, KEY_CATEGORY_TOS);
+
 
 }
