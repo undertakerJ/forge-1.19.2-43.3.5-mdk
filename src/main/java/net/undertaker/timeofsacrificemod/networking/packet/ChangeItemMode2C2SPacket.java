@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
+import net.undertaker.timeofsacrificemod.item.custom.KatanaItem;
 import net.undertaker.timeofsacrificemod.item.custom.RealityDistortionGloveItem;
 
 import java.util.function.Supplier;
@@ -29,9 +30,12 @@ public class ChangeItemMode2C2SPacket {
             ServerLevel level = player.getLevel();
             ItemStack heldItem = player.getMainHandItem();
 
-            if(heldItem.getItem() instanceof RealityDistortionGloveItem){
+            if(heldItem.getItem() instanceof RealityDistortionGloveItem || heldItem.getItem() instanceof KatanaItem){
                 heldItem.getOrCreateTag().putInt("Mode", 2);
-                heldItem.setHoverName(Component.translatable("rdg.item_mode2"));
+                if (heldItem.getItem() instanceof RealityDistortionGloveItem){
+                    heldItem.setHoverName(Component.translatable("rdg.item_mode2"));}
+                else {
+                    heldItem.setHoverName(Component.translatable("katana.item_mode2"));}
             }
         });
         return true;

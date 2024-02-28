@@ -14,6 +14,15 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> STIMULATOR_USED =
             registerSoundEvent("stimulator_used");
+    public static final RegistryObject<SoundEvent> KATANA_ATTACK_1 =
+            registerSoundEvent("katana_slash1"),
+            KATANA_ATTACK_2 =
+                    registerSoundEvent("katana_slash2"),
+            KATANA_ATTACK_3 =
+                    registerSoundEvent("katana_slash3");
+
+    public static final RegistryObject<SoundEvent> KATANA_SWEEP =
+            registerSoundEvent("katana_sweep_1");
  public static final RegistryObject<SoundEvent> BANDAGE_USAGE =
             registerSoundEvent("bandage_usage");
 

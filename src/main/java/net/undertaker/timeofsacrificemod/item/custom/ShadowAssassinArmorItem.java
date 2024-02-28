@@ -21,7 +21,6 @@ public class ShadowAssassinArmorItem extends ArmorItem {
 
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
-        long time = level.getDayTime();
         //Создание проверки на полный сет
         boolean shadowFullSet = player.getItemBySlot(EquipmentSlot.HEAD).getItem() == ModItems.SHADOW_ASSASSIN_HELMET.get() &&
                 player.getItemBySlot(CHEST).getItem() == ModItems.SHADOW_ASSASSIN_CHESTPLATE.get() &&
@@ -33,12 +32,12 @@ public class ShadowAssassinArmorItem extends ArmorItem {
             int lightLevel = level.getBrightness(LightLayer.BLOCK, playerPos);
             int lightLevelSky = level.getBrightness(LightLayer.SKY, playerPos);
 
-            if ((time >= 12541 && time <= 23458) && lightLevel <= 3) {
+            if (level.isNight() && lightLevel <= 3) {
                 // Ночь и освещение ниже 3
                 player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 20));
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20, 1));
                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 20, 2));
-            } else if (lightLevel <= 3 && lightLevelSky <= 3) {
+            } else if (lightLevel <= 3 && level.isDay() && lightLevelSky <= 3) {
                 // День и освещение ниже 3 и игрок не видит неба
                 player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 20));
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 20, 1));

@@ -37,18 +37,15 @@ public class StrengthStimulatorItem extends Item {
     }
     //При использовании
     @Override
-    public void appendHoverText(ItemStack itemStack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, Level level, List<Component> components, TooltipFlag tooltipFlag) {
         components.add(Component.translatable("tooltip.strength_stimulator_item").withStyle(ChatFormatting.DARK_GRAY));
         super.appendHoverText(itemStack, level, components, tooltipFlag);
     }
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand interactionHand) {
-        if (!level.isClientSide()) {
-            // Если нажат Shift
-            if (player.isShiftKeyDown()) {
+        if (!level.isClientSide() && player.isShiftKeyDown()) {
                 // Проверка есть ли игрок перед курсором
                 EntityHitResult playerAtCursor = getPlayerAtCursor(player);
-
                 float randomNumber = player.getRandom().nextFloat();
                 // Если есть результат !=null и эффекты применяются
                 if (playerAtCursor != null) {
@@ -71,7 +68,7 @@ public class StrengthStimulatorItem extends Item {
                     }
                 }
                 level.playSound(null, player, ModSounds.STIMULATOR_USED.get(), SoundSource.AMBIENT, 1f, 1f);
-            }
+
         }
         return super.use(level, player, interactionHand);
     }

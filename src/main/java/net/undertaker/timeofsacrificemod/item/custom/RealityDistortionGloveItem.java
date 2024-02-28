@@ -41,8 +41,6 @@ public class RealityDistortionGloveItem extends SwordItem {
 
     }
 
-    private static final int numberOfModes = 5;
-
     private @Nullable EntityHitResult getEntityAtCursor(Player player, float maxDistance) {
         Vec3 lookVector = player.getLookAngle().scale(maxDistance);
         Vec3 startPos = player.getEyePosition();

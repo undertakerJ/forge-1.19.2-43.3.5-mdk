@@ -41,6 +41,9 @@
   "item.timeofsacrifice.the_light_rod": "The Light Rod",
   "item.timeofsacrifice.dwarfs_hammer": "The Dwarf's Hammer",
   "item.timeofsacrifice.reality_distortion_glove": "Reality Distortion Glove",
+  "item.timeofsacrifice.katana_relict": "Katana Relict",
+  "item.timeofsacrifice.katana_in_scabbard": "Katana Relict in Scabbard ",
+  "item.timeofsacrifice.scabbard": "Scabbard",
 
   "death.attack.timeofsacrifice_wrong_player_hammer": "%1$s died unable to withstand the power of the SaltFairy's artifact",
   "death.attack.timeofsacrifice_entropy_effect": "%1$s gone, reduced to atoms",
@@ -81,6 +84,11 @@
   "rdg.item_mode2": "Reality Distortion Glove - REPAIR",
   "rdg.item_mode3": "Reality Distortion Glove - ENTROPY DEGRADATION",
   "rdg.item_mode4": "Reality Distortion Glove - GIFT OF THE HEALER",
+
+  "katana.item_mode0": "Relict - Dance of Living Steel",
+  "katana.item_mode1": "Relict - Dance of Instant Movements",
+  "katana.item_mode2": "Relict - Dance of Blade",
+  "katana.item_mode3": "Relict - Sudden Death",
 
   "key.category.timeofsacrifice.tos_options": "Time of Sacrifice",
   "key.timeofsacrifice.mode_1": "Item Mode 1",

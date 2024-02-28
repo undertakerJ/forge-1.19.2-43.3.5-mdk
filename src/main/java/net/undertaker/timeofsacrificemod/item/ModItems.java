@@ -24,12 +24,7 @@ public class ModItems {
 
 
     //TOOLS
-    public static final RegistryObject<Item> DWARFS_HAMMER = ITEMS.register("dwarfs_hammer",
-            () -> new DwarfsHammerItem(Tiers.IRON,4, -3f,
-                    new Item.Properties()
-                            .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
-                            .stacksTo(1)
-                            .durability(-1)));
+
     public static final RegistryObject<Item> PLATINUM_SWORD = ITEMS.register("platinum_sword",
             () -> new SwordItem(Tiers.DIAMOND, 3, -2.4f,
                     new Item.Properties()
@@ -88,6 +83,15 @@ public class ModItems {
                                     .stacksTo(1)
                                     .defaultDurability(334)
                                     .rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> DWARFS_HAMMER = ITEMS.register("dwarfs_hammer",
+            () -> new DwarfsHammerItem(Tiers.IRON,4, -3f,
+                    new Item.Properties()
+                            .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                            .stacksTo(1)
+                            .durability(-1)
+                            .rarity(Rarity.EPIC)
+                            .fireResistant()));
+
 public static final RegistryObject<Item> REALITY_DISTORTION_GLOVE = ITEMS.register("reality_distortion_glove",
             () ->
                     new RealityDistortionGloveItem(Tiers.NETHERITE, 0, -1F,
@@ -95,6 +99,29 @@ public static final RegistryObject<Item> REALITY_DISTORTION_GLOVE = ITEMS.regist
                                     .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
                                     .stacksTo(1)
                                     .defaultDurability(500)
+                                    .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> KATANA_IN_SCABBARD = ITEMS.register("katana_in_scabbard",
+            () ->
+                    new KatanaInScabbardItem(Tiers.NETHERITE, -2, -2.4F,
+                            new Item.Properties()
+                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                                    .stacksTo(1)
+                                    .defaultDurability(-1)
+                                    .rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> SCABBARD = ITEMS.register("scabbard",
+            () -> new ScabbardItem(Tiers.NETHERITE, -3, -2.4F,
+                            new Item.Properties()
+                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                                    .stacksTo(1)
+                                    .defaultDurability(-1)
+                                    .rarity(Rarity.EPIC)));
+
+ public static final RegistryObject<Item> KATANA_RELICT = ITEMS.register("katana_relict",
+            () -> new KatanaItem(Tiers.NETHERITE, 2, -2.4F,
+                            new Item.Properties()
+                                    .tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)
+                                    .stacksTo(1)
+                                    .defaultDurability(-1)
                                     .rarity(Rarity.EPIC)));
 
 
@@ -129,7 +156,7 @@ public static final RegistryObject<Item> REALITY_DISTORTION_GLOVE = ITEMS.regist
 
 
     //ITEMS
-    public static final RegistryObject<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot",
+     public static final RegistryObject<Item> PLATINUM_INGOT = ITEMS.register("platinum_ingot",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));
     public static final RegistryObject<Item> SPEED_CATALYST = ITEMS.register("speed_catalyst",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTab.TIME_OF_SACRIFICE_TAB)));

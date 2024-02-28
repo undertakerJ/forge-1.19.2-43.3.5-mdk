@@ -41,7 +41,7 @@ public class UltimateStimulatorItem extends Item {
     }
     //При использовании
     @Override
-    public void appendHoverText(ItemStack itemStack, @org.jetbrains.annotations.Nullable Level level, List<Component> components, TooltipFlag tooltipFlag) {
+    public void appendHoverText(ItemStack itemStack, Level level, List<Component> components, TooltipFlag tooltipFlag) {
         components.add(Component.translatable("tooltip.ultimate_stimulator_item").withStyle(ChatFormatting.DARK_GRAY));
         super.appendHoverText(itemStack, level, components, tooltipFlag);
     }

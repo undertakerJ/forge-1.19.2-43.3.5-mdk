@@ -2,10 +2,13 @@ package net.undertaker.timeofsacrificemod.event;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -15,6 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.CriticalHitEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -134,9 +138,10 @@ public class ForgeEventBusEvents {
             player.removeEffect(ModEffects.GUARANTEED_CRIT.get());
         }
     }
+
     @SubscribeEvent
-    public static void onLivingDeathEvent(LivingDeathEvent event){
-        if(event.getSource() == ENTROPY){
+    public static void onLivingDeathEvent(LivingDeathEvent event) {
+        if (event.getSource() == ENTROPY) {
             Level level = event.getEntity().getLevel();
             BlockPos entityPos = event.getEntity().blockPosition();
             int offsetX = entityPos.getX();
@@ -147,4 +152,5 @@ public class ForgeEventBusEvents {
                     offsetX, offsetY, offsetZ, 3, Explosion.BlockInteraction.NONE);
         }
     }
+
 }
