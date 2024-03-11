@@ -42,7 +42,7 @@ public class KatanaItem extends SwordItem {
         return super.use(level, player, interactionHand);
     }
     public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.BLOCK;
+        return UseAnim.SPEAR;
     }
     public int getUseDuration(ItemStack pStack) {
         return 72000;

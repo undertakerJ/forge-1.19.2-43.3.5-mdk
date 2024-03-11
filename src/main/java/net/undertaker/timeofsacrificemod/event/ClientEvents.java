@@ -43,7 +43,7 @@ public class ClientEvents {
             }
             if (KeyBinding.DASH_KEY.consumeClick()) {
                 Player player = Minecraft.getInstance().player;
-                if (player != null) {
+                if (player != null && !player.isSwimming() && !player.isCrouching() && player.isOnGround()) {
                     long currentTime = System.currentTimeMillis();
 
                     if (currentTime - lastDashTime >= DASH_COOLDOWN) {
