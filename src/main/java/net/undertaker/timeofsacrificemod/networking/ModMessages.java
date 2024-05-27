@@ -1,5 +1,6 @@
 package net.undertaker.timeofsacrificemod.networking;
 
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkDirection;
@@ -63,6 +64,11 @@ public class ModMessages {
                 .encoder(ChangeItemMode4C2SPacket::toBytes)
                 .consumerMainThread(ChangeItemMode4C2SPacket::handle)
                 .add();
+net.messageBuilder(PlayerManaSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PlayerManaSyncS2CPacket::new)
+                .encoder(PlayerManaSyncS2CPacket::toBytes)
+                .consumerMainThread(PlayerManaSyncS2CPacket::handle)
+                .add();
 
     }
 
@@ -70,7 +76,7 @@ public class ModMessages {
         INSTANCE.sendToServer(message);
     }
 
-    public static <MSG> void sendToPlayer(MSG message, ServerPlayer player) {
+    public static <MSG> void sendToPlayer(PlayerManaSyncS2CPacket message, ServerPlayer player) {
         INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), message);
     }
 
